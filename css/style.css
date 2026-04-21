@@ -1132,13 +1132,22 @@ section {
 .site-header a:hover {
   text-decoration: none;
 }
-.site-header__container {
+.site-header > .container {
+  max-width: 1680px;
+  padding-inline: 32px;
+}
+@media only screen and (max-width: 1350px) {
+  .site-header > .container {
+    padding-inline: 24px;
+  }
+}
+.site-header__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  padding: 1.25rem 1.5rem 1.25rem 2rem;
-  transition: padding 0.25s ease;
+  padding-block: 1.25rem;
+  transition: padding-block 0.25s ease;
 }
 .site-header__brand {
   display: flex;
@@ -1323,7 +1332,7 @@ section {
 .site-header--compact {
   border-bottom-color: rgba(0, 0, 0, 0.1);
 }
-.site-header--compact .site-header__container {
+.site-header--compact .site-header__inner {
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -1368,8 +1377,11 @@ section {
     border-bottom-color: rgba(0, 0, 0, 0.08);
     color: #0A1428;
   }
-  .site-header__container {
-    padding: 2rem 1.5rem;
+  .site-header > .container {
+    padding-inline: 24px;
+  }
+  .site-header__inner {
+    padding-block: 2rem;
   }
   .site-header__toggle {
     display: inline-flex;
@@ -1443,7 +1455,7 @@ section {
   .site-header__menu .sub-menu a {
     padding: 0.25rem 0;
   }
-  .site-header.site-header--compact .site-header__container {
+  .site-header.site-header--compact .site-header__inner {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }

@@ -20,7 +20,7 @@ $footer_context = curixus_project_get_footer_context();
 						<div class="site-footer__logo">
 							<a class="site-footer__logo-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 								<?php if ( ! empty( $footer_context['logo_markup'] ) ) : ?>
-									<?php echo $footer_context['logo_markup']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+									<?php echo wp_kses_post( $footer_context['logo_markup'] ); ?>
 								<?php else : ?>
 									<span class="site-footer__logo-text"><?php bloginfo( 'name' ); ?></span>
 								<?php endif; ?>
@@ -53,12 +53,21 @@ $footer_context = curixus_project_get_footer_context();
 				<div class="container">
 					<ul class="site-footer__meta-list">
 						<?php foreach ( $footer_context['legal_items'] as $footer_legal_item ) : ?>
-							<li class="site-footer__meta-item">
-								<?php if ( ! empty( $footer_legal_item['url'] ) ) : ?>
-									<a class="site-footer__meta-link" href="<?php echo esc_url( $footer_legal_item['url'] ); ?>">
-										<?php echo esc_html( $footer_legal_item['label'] ); ?>
-									</a>
-								<?php else : ?>
+								<li class="site-footer__meta-item">
+									<?php if ( ! empty( $footer_legal_item['url'] ) ) : ?>
+										<a
+											class="site-footer__meta-link"
+											href="<?php echo esc_url( $footer_legal_item['url'] ); ?>"
+											<?php if ( ! empty( $footer_legal_item['target'] ) ) : ?>
+												target="<?php echo esc_attr( $footer_legal_item['target'] ); ?>"
+												<?php if ( '_blank' === $footer_legal_item['target'] ) : ?>
+													rel="noopener noreferrer"
+												<?php endif; ?>
+											<?php endif; ?>
+										>
+											<?php echo esc_html( $footer_legal_item['label'] ); ?>
+										</a>
+									<?php else : ?>
 									<span class="site-footer__meta-text"><?php echo esc_html( $footer_legal_item['label'] ); ?></span>
 								<?php endif; ?>
 							</li>
