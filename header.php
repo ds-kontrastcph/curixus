@@ -85,7 +85,7 @@ $curixus_header_classes = array(
 							<?php
 							wp_nav_menu(
 								array(
-									'theme_location' => 'menu-1',
+									'theme_location' => 'header-menu',
 									'container'      => false,
 									'fallback_cb'    => false,
 									'menu_class'     => 'site-header__menu',

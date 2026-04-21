@@ -314,7 +314,7 @@ if ( ! function_exists( 'curixus_project_get_header_context' ) ) :
 			'dark_logo_markup'    => $dark_logo_markup,
 			'home_url'            => home_url( '/' ),
 			'site_name'           => get_bloginfo( 'name' ),
-			'has_menu'            => has_nav_menu( 'menu-1' ),
+			'has_menu'            => has_nav_menu( 'header-menu' ),
 		);
 	}
 endif;
