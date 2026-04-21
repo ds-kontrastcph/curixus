@@ -1,0 +1,164 @@
+---
+description: PHP development rules for WordPress templates, helpers, and custom post types
+globs: "*.php, inc/**/*.php, template-parts/**/*.php, page-templates/**/*.php"
+alwaysApply: false
+---
+
+# PHP and WordPress Development
+
+## Function Naming
+
+- Theme functions: `curixus_project_{descriptive_name}()`
+- Helper functions: Unique names (e.g., `sprite_svg()`, `get_excerpt_trim()`)
+- Check `./docs/02-conventions.md` for patterns
+
+## File Organization
+
+**Templates** (root directory):
+- Follow WordPress template hierarchy: `page.php`, `single.php`, `archive.php`, `404.php`
+- Keep logic minimal; call helpers from `inc/`
+
+**Application Layer** (`/inc/`):
+- `scripts.php` - Asset enqueuing only
+- `helpers.php` - Utility functions (SVG sprites, excerpts, modal system)
+- `acf.php` - ACF configuration (DO NOT manually edit auto-registration)
+- `walkers.php` - Custom menu walkers
+- `template-functions.php` - WordPress hooks and filters
+- `init-cpt.php` - CPT loader (add new CPTs to array here)
+
+**Custom Post Types** (`/inc/post-types/`):
+- One file per CPT: `{cpt-slug}.php`
+- Follow pattern from `modals.php`
+
+## Helper Functions (Reuse First)
+
+**Check `./docs/03-reuse-catalog.md` before creating new helpers.**
+
+**Existing helpers**:
+- `sprite_svg($name, $width, $height, $return)` - SVG icons
+- `get_excerpt_trim($num_words, $more, $post_id)` - Trimmed excerpts
+- `extract_youtube_id($url)` - YouTube video IDs
+
+## Creating New Helpers
+
+**Add to `inc/helpers.php`**:
+
+```php
+/**
+ * Clear description of purpose.
+ *
+ * @param type $param Description.
+ * @return type Return value.
+ */
+function helper_name( $param ) {
+    // Implementation
+}
+```
+
+## Custom Post Types Pattern
+
+```php
+<?php
+add_action( 'init', '{cpt_slug}_cpt' );
+
+if ( ! function_exists( '{cpt_slug}_cpt' ) ) :
+    function {cpt_slug}_cpt() {
+        $labels = array(/* ... */);
+        $args = array(
+            'labels' => $labels,
+            'public' => true/false,
+            'show_in_rest' => true, // Enable Gutenberg
+            'supports' => array( 'title', 'editor' ),
+            // ...
+        );
+        register_post_type( '{cpt_slug}', $args );
+    }
+endif;
+```
+
+## Asset Enqueuing
+
+**In `inc/scripts.php`** ONLY:
+
+```php
+wp_enqueue_style( 
+    'handle', 
+    get_template_directory_uri() . '/css/file.css',
+    array(), // Dependencies
+    filemtime(get_template_directory() . '/css/file.css'), // Cache busting
+    false
+);
+```
+
+**NEVER**:
+- Hardcode URLs (use `get_template_directory_uri()`)
+- Manual version numbers (use `filemtime()`)
+- Inline styles/scripts in templates
+
+## ACF Access
+
+```php
+// Current post/page
+get_field('field_name');
+the_field('field_name');
+
+// Options page
+get_field('field_name', 'option');
+
+// Specific post
+get_field('field_name', $post_id);
+
+// Menu items (in walkers)
+get_field('field_name', $item->ID);
+```
+
+## WordPress API Usage
+
+**Use WordPress functions, NOT direct SQL**:
+
+```php
+// ✅ Good
+$posts = get_posts(['post_type' => 'page']);
+$query = new WP_Query(['category_name' => 'news']);
+
+// ❌ Bad
+global $wpdb;
+$results = $wpdb->get_results("SELECT * FROM ...");
+```
+
+## Security
+
+- Escape ALL output: `esc_html()`, `esc_attr()`, `esc_url()`
+- Sanitize input: `sanitize_text_field()`, `sanitize_email()`
+- Verify nonces for form submissions
+- Check capabilities: `current_user_can()`
+
+## Modal System
+
+**Global storage pattern** (used in blocks and footer):
+
+```php
+global $modal_storage;
+$modal_storage = $modal_storage ?? [];
+
+// Add modal
+$modal_storage[] = [
+    'id' => 'modal-' . $modal_id,
+    'modal_id' => $modal_id
+];
+
+// Modals render automatically in footer via wp_footer action
+```
+
+## WordPress Coding Standards
+
+- Yoda conditions: `if ( true === $var )`
+- Braces on same line: `function name() {`
+- Spaces around operators: `$a = $b + $c`
+- Single quotes (unless interpolation needed)
+
+## Reference
+
+- Conventions: `./docs/02-conventions.md`
+- Helper catalog: `./docs/03-reuse-catalog.md`
+- Anti-patterns: `./docs/05-style-and-anti-patterns.md`

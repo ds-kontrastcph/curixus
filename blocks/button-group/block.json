@@ -1,0 +1,42 @@
+{
+	"name": "curixus/button-group",
+	"title": "Button Group",
+	"description": "Button Group Section",
+	"category": "curixus",
+	"icon": "button",
+	"keywords": ["btn", "link", "button", "href"],
+	"acf": {
+		"mode": "preview",
+		"blockVersion": 3,
+		"renderTemplate": "block-render.php"
+	},
+	"example": {
+		"attributes": {
+			"preview": true,
+			"data": {
+				"preview_image_help": "screenshot.png"
+			}
+		}
+	},
+	"supports": {
+		"align": ["none"],
+		"anchor": true,
+		
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": false,
+			"gradients": false,
+			"link": false
+		},
+		"dimensions": {
+			"minHeight": false
+		},
+		"position": {
+			"sticky": false
+		}
+	},
+	"style": ["file:./style.css"]
+}

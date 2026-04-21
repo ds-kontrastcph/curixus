@@ -1,0 +1,104 @@
+---
+description: Meta-rule for maintaining documentation and Cursor rules when architecture or patterns change
+globs:
+alwaysApply: true
+---
+
+# Documentation and Rules Maintenance
+
+## When to Update ./docs/*.md
+
+Update documentation files ONLY when completing tasks that introduce **significant, fundamental changes**:
+
+- New core modules or bounded contexts (e.g., new CPT systems, major feature domains)
+- Changed data flow or cross-cutting concerns (e.g., new asset pipeline, authentication layer)
+- Changes to public APIs, helper function signatures, or shared component interfaces
+- Major introduction/removal of external services or integrations
+- New architectural layers or patterns that affect multiple files
+
+**DO NOT update docs for**:
+- Minor refactors or bug fixes
+- Single component changes
+- Trivial edits or CSS adjustments
+- Adding one block or template
+
+## When to Update .cursor/rules/*.mdc
+
+Update or create rules when architectural changes affect:
+
+- How developers should structure new code (new patterns established)
+- Constraints on imports, dependencies, or module boundaries
+- New integration patterns or external service usage
+- Changed conventions that differ from existing rules
+
+## How to Update Docs/Rules Correctly
+
+**Before modifying**:
+- Use MCP context7 to search ./docs for existing patterns and where to update
+- Inspect existing .cursor/rules/*.mdc files to avoid duplicates or conflicts
+- Read the relevant section completely to understand context
+
+**When updating**:
+- Be minimal and precise; docs are already comprehensive
+- Maintain existing structure and formatting (Markdown, Mermaid diagrams)
+- Reference specific files/functions/classes that changed
+- Add to existing sections rather than creating redundant ones
+- Update README.md "Last Updated" date and change log if major update
+
+**For rule files**:
+- Create under .cursor/rules/ with .mdc extension
+- Use valid YAML frontmatter: `description:`, `globs:`, `alwaysApply:`
+- Keep body concise with actionable bullets
+- Reference docs instead of repeating them (e.g., "Follow ./docs/02-conventions.md")
+- Never overwrite or delete existing rules without understanding their purpose
+
+## Creating .mdc Rule Files
+
+**Structure**:
+```
+---
+description: One or two sentence description
+globs: path/pattern/*.ext, other/**/*.php
+alwaysApply: false
+---
+
+# Rule Title
+
+- Concise bullet point instruction
+- Reference docs when appropriate: "See ./docs/03-reuse-catalog.md"
+- Use MCP context7 to verify external library usage
+```
+
+**Frontmatter rules**:
+- `description`: Brief, clear purpose (1-2 sentences max)
+- `globs`: Comma-separated patterns matching REAL repo paths (or leave empty for global/agent-requested)
+- `alwaysApply`: Use `true` ONLY for critical global rules (2-4 max)
+
+## Using MCP Context7
+
+When working with external libraries, packages, or WordPress plugins:
+
+**If NOT documented in ./docs OR no usage examples exist in repo**:
+1. Use MCP context7 to fetch official documentation
+2. Search for real API signatures, options, and best practices
+3. Align usage with verified information
+4. NEVER guess function signatures or fabricate APIs
+
+**If MCP context7 unavailable**:
+- Clearly mark missing information with TODO comments
+- Ask user for clarification rather than inventing details
+- Reference official docs URLs in comments
+
+## Integration Workflow
+
+**After completing architectural changes**:
+1. Update relevant ./docs/*.md sections
+2. Check if .cursor/rules/*.mdc needs updates
+3. Commit docs and rules in same PR as code changes
+4. Update README.md if documentation structure changed
+
+**Preserve intent**:
+- Read existing content before modifying
+- Extend rather than replace (unless explicitly incorrect)
+- Maintain consistency with established patterns
+- Keep rules non-redundant (they consume context budget)

@@ -1,0 +1,263 @@
+{
+	"version": 2,
+	"settings": {
+		"border": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"appearanceTools": true,
+		"color": {
+			"link": true,
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"palette": [
+				{
+					"color": "#F88673",
+					"name": "Warm Coral",
+					"slug": "warm-coral"
+				},
+				{
+					"color": "#926FDE",
+					"name": "Vivid Violet",
+					"slug": "vivid-violet"
+				},
+				{
+					"color": "#6284C8",
+					"name": "Light Blue",
+					"slug": "light-blue"
+				},
+				{
+					"color": "#54F0A3",
+					"name": "Mint Green",
+					"slug": "mint-green"
+				},
+				{
+					"color": "#FFDD0C",
+					"name": "Yellow",
+					"slug": "yellow"
+				},
+				{
+					"color": "#FAFAFA",
+					"name": "Cloud White",
+					"slug": "cloud-white"
+				},
+				{
+					"color": "#B2B8BE",
+					"name": "Grey",
+					"slug": "grey"
+				},
+				{
+					"color": "#0A1428",
+					"name": "Navy Blue",
+					"slug": "navy-blue"
+				},
+				{
+					"color": "#F3F3F3",
+					"name": "Light grey",
+					"slug": "light-grey"
+				},
+				{
+					"color": "rgba(98,132,200,.2)",
+					"name": "Light Blue Transparent",
+					"slug": "light-blue-transparent"
+				},
+				{
+					"color": "#A08A03",
+					"name": "Darker yellow",
+					"slug": "darker-yellow"
+				},
+				{
+					"color": "#D5422A",
+					"name": "Darker Coral",
+					"slug": "darker-coral"
+				},
+				{
+					"color": "#6A3CCF",
+					"name": "Darker Violet",
+					"slug": "darker-violet"
+				},
+				{
+					"color": "#11AF61",
+					"name": "Darker Mint",
+					"slug": "darker-mint"
+				},
+				{
+					"color": "#FFA600",
+					"name": "Link Orange Gradient",
+					"slug": "link-orange-gradient"
+				},
+				{
+					"color": "#FFF7DE",
+					"name": "Title Yellow Gradient",
+					"slug": "title-yellow-gradient"
+				}
+			],
+			"gradients": [
+				{
+					"slug": "gradient-yellow",
+					"gradient": "linear-gradient(to bottom,#FFF7DE 0%,#FFDD0C 100%)",
+					"name": "Gradient yellow"
+				},
+				{
+					"slug": "gradient-yellow-orange",
+					"gradient": "linear-gradient(to bottom,#FFDD0C 0%,#FFA600 51%,#FF790C 100%)",
+					"name": "Gradient yellow-orange"
+				},
+				{
+					"slug": "gradient-blue",
+					"gradient": "linear-gradient(to right,#6284C8 0%,rgba(98,132,200,.1) 100%)",
+					"name": "Gradient blue"
+				},
+				{
+					"slug": "gradient-white-blue",
+					"gradient": "linear-gradient(to right,#FAFAFA 0%,#6284C8 100%)",
+					"name": "Gradient white-blue"
+				},
+				{
+					"slug": "light-stroke-effect",
+					"gradient": "linear-gradient(to right,#0A1428 0%,#364C78 31%,#7A9CDF 50%,#4C68A0 68%,#0A1428 100%)",
+					"name": "Light Stroke effect"
+				},
+				{
+					"slug": "dark-gradient",
+					"gradient": "linear-gradient(to right,#0A1428 0%,#24478E 100%)",
+					"name": "Dark Gradient"
+				},
+				{
+					"slug": "linear-dark",
+					"gradient": "linear-gradient(to right,#6284C8 0%,#0A1428 100%)",
+					"name": "Linear dark"
+				},
+				{
+					"slug": "dark-gradient-hero-banners",
+					"gradient": "linear-gradient(to bottom right,#101F3D 0%,#0A1428 100%)",
+					"name": "Dark Gradient Hero Banners"
+				}
+			]
+		},
+		"dimensions": {
+			"minHeight": true
+		},
+		"layout": {
+			"contentSize": "1200px",
+			"wideSize": "1440px"
+		},
+		"blocks": {
+			"core/image": {
+				"lightbox": {
+					"allowEditing": true,
+					"enabled": false
+				}
+			}
+		},
+		"position": {
+			"sticky": true
+		},
+		"spacing": {
+			"blockGap": true,
+			"margin": true,
+			"padding": true,
+			"spacingSizes": [
+				{"size": "1rem", "slug": "1","name": "16px (1rem)"},
+				{"size": "2rem", "slug": "2","name": "32px (2rem)"},
+				{"size": "3rem", "slug": "3","name": "48px (3rem)"},
+				{"size": "4rem", "slug": "4","name": "64px (4rem)"},
+				{"size": "5rem", "slug": "5","name": "80px (5rem)"},
+				{"size": "6rem", "slug": "6","name": "96px (6rem)"},
+				{"size": "7rem", "slug": "7","name": "112px (7rem)"},
+				{"size": "8rem", "slug": "8","name": "128px (8rem)"},
+				{"size": "9rem", "slug": "9","name": "144px (9rem)"},
+				{"size": "10rem", "slug": "10","name": "160px (10rem)"},
+				{"size": "11rem", "slug": "11","name": "176px (11rem)"},
+				{"size": "12rem", "slug": "12","name": "192px (12rem)"},
+				{"size": "13rem", "slug": "13","name": "208px (13rem)"},
+				{"size": "14rem", "slug": "14","name": "14rem"},
+				{"size": "15rem", "slug": "15","name": "15rem"},
+				{"size": "16rem", "slug": "16","name": "16rem"},
+				{"size": "17rem", "slug": "17","name": "17rem"}
+				
+			],
+			"units": ["px", "em", "rem", "vh", "vw", "%"]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "'Montserrat', sans-serif",
+					"slug": "primary-fonts",
+					"name": "Montserrat"
+				},
+				{
+					"fontFamily": "'Bricolage Grotesque', sans-serif",
+					"slug": "secondary-fonts",
+					"name": "Bricolage Grotesque"
+				}
+			],
+			"fontSizes": [
+				{
+					"slug": "custom-16",
+					"size": "0.9375rem",
+					"name": "B2 (15px)"
+				},
+				{
+					"slug": "custom-21",
+					"size": "1.125rem",
+					"name": "B1 (18px)"
+				},
+				{
+					"slug": "h5",
+					"size": "1.125rem",
+					"name": "H5 (18px)"
+				},
+				{
+					"slug": "h4",
+					"size": "1.375rem",
+					"name": "H4 (22px)"
+				},
+				{
+					"slug": "h3",
+					"size": "2.1875rem",
+					"name": "H3 (35px)"
+				},
+				{
+					"slug": "h2",
+					"size": "3rem",
+					"name": "H2 (48px)"
+				},
+				{
+					"slug": "h1",
+					"size": "5.3125rem",
+					"name": "H1 (85px)"
+				}
+			],
+			"lineHeight": true
+		},
+
+		"custom": {
+			"fontWeight": {
+				"black": 900,
+				"extra_bold": 800,
+				"bold": 700,
+				"semi_bold": 600,
+				"medium": 500,
+				"regular": 400,
+				"light": 300
+			}
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "#101F3D",
+			"text": "#FAFAFA"
+		},
+
+		
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--primary-fonts)",
+			"fontSize": "16px",
+			"letterSpacing": "normal",
+			"lineHeight": "150%"
+		}
+	}
+}

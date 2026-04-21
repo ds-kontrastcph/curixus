@@ -1,0 +1,71 @@
+---
+description: Mandatory code quality standards - English comments, DRY principle, no magic numbers, semantic naming
+globs:
+alwaysApply: true
+---
+
+# Code Quality Standards (MANDATORY)
+
+## English-Only Rule (NEVER BREAK)
+
+- ALL code comments, PHPDoc blocks, inline docs, commit messages MUST be in English
+- NO exceptions for other languages in any context
+- See `./docs/05-style-and-anti-patterns.md` section 1
+
+## DRY Principle (Enforce Reuse)
+
+- **BEFORE creating**: Check `./docs/03-reuse-catalog.md` for existing components, helpers, mixins
+- If code appears 2+ times: extract to helper function (inc/helpers.php) or SCSS mixin (_variable.scss)
+- Use existing: buttons (.btn), SVG sprites (sprite_svg()), modal system (global $modal_storage)
+- Prohibited: Duplicate modal rendering, duplicate SVG handling, repeated media queries
+
+## No Magic Numbers
+
+- Use constants, variables, or configuration for all non-obvious numeric values
+- Exceptions: 0, 1, 100% in obvious contexts
+- PHP: `define('CONSTANT_NAME', value)` or `$variable_name`
+- SCSS: `$variable-name` in `_variable.scss`
+- JavaScript: `const CONSTANT_NAME = value`
+- See `./docs/05-style-and-anti-patterns.md` section 2
+
+## Semantic Naming (No Cryptic Names)
+
+**PHP**:
+- Functions: `curixus_project_{descriptive_name}()` (theme prefix required)
+- Variables: `$descriptive_snake_case` (e.g., `$dark_header_logo_id`, NOT `$x` or `$img`)
+- Classes: `Descriptive_Class_Name` (PascalCase with underscores)
+
+**CSS/SCSS**:
+- BEM methodology: `.block__element--modifier`
+- Examples: `.site-header__wrap`, `.btn--primary`, `.card-tiles__description`
+- NOT: `.hdr`, `.btn-gr`, `.item`
+
+**JavaScript**:
+- camelCase: `getVariantFromEl()`, `activeLayer`, `transitionInProgress`
+- Constants: `TRANSITION_MS`, `VARIANTS`
+
+## Escaping and Security
+
+- **ALWAYS escape output**: `esc_html()`, `esc_attr()`, `esc_url()`, `wp_kses_post()`
+- NO raw echo of variables in templates
+- Sanitize input when saving data
+
+## Prohibited Patterns
+
+- ❌ Hardcoded URLs (use `get_template_directory_uri()`)
+- ❌ Inline styles/scripts (enqueue via inc/scripts.php)
+- ❌ Direct database queries (use WordPress API: `get_posts()`, `WP_Query`)
+- ❌ Ad-hoc solutions bypassing architecture (use established patterns)
+
+**Full list**: `./docs/05-style-and-anti-patterns.md`
+
+## Code Review Checklist
+
+Before suggesting code, verify:
+- [ ] Comments in English
+- [ ] No magic numbers
+- [ ] No duplicate code (checked reuse catalog)
+- [ ] Descriptive names
+- [ ] Output escaped
+- [ ] No hardcoded URLs
+- [ ] Follows architecture patterns from docs

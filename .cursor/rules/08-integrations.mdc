@@ -1,0 +1,204 @@
+---
+description: Rules for working with external services and third-party integrations
+globs:
+alwaysApply: false
+---
+
+# External Integrations and Services
+
+**Agent-requested rule** - Load when adding/modifying integrations.
+
+## Current Integrations
+
+**Review `./docs/04-integrations-and-infra.md` before modifying.**
+
+**Existing services**:
+1. Google Fonts (CDN) - Montserrat, Bricolage Grotesque
+2. Fancybox v6.1.7 (self-hosted) - Modal/lightbox
+3. ACF Plugin (required) - Custom fields and blocks
+4. Contact Form 7 (optional) - Form handling
+5. Gutenberg (WordPress core) - Block editor
+
+## Adding New External Libraries
+
+**Before adding**:
+1. Check if functionality exists in WordPress core
+2. Check if existing library can be extended (e.g., Fancybox for all modals)
+3. Verify license compatibility (GPL preferred)
+4. Consider bundle size impact
+
+**Self-host vs CDN**:
+- **Self-host**: Better for stability, control, offline dev
+- **CDN**: Better for performance, caching (use for fonts only)
+
+**Add to appropriate location**:
+- CSS libraries: `/css/library-name.css`
+- JS libraries: `/js/library-name.js`
+- Enqueue in `inc/scripts.php` with version number and cache busting
+
+## Using MCP Context7 for External Libraries
+
+**When library is NOT documented in ./docs**:
+
+1. Use MCP context7 to fetch official documentation
+2. Verify function signatures, options, configuration
+3. Follow real API patterns (don't guess)
+4. Add usage examples to appropriate docs section
+
+**Example workflow**:
+
+```
+Task: Add new lightbox library feature
+1. MCP context7: Search Fancybox v6.1.7 documentation
+2. Verify configuration options from official docs
+3. Implement using verified API
+4. Update ./docs/04-integrations-and-infra.md with new feature
+```
+
+**If MCP unavailable**:
+- Mark with TODO comment
+- Reference official docs URL
+- Ask user for clarification
+
+## ACF Integration
+
+**Field groups stored in `/acf-json/`**:
+- Never manually edit JSON files
+- Edit in WordPress admin (auto-saves to JSON)
+- Commit JSON files to version control
+- Other environments sync automatically
+
+**ACF Blocks**:
+- Auto-register from `/blocks/` directory
+- No manual registration needed
+- See `03-acf-blocks.mdc` for patterns
+
+## WordPress Plugin Dependencies
+
+**Required**:
+- Advanced Custom Fields (ACF) - blocks and custom fields depend on this
+
+**Optional**:
+- Contact Form 7 - form handling (theme has custom filters for it)
+
+**Document new required plugins** in:
+- `./docs/04-integrations-and-infra.md`
+- `./docs/00-overview.md` (tech stack section)
+
+## Configuration Patterns
+
+**NO .env files** in this theme. Use:
+
+1. **PHP constants** (functions.php): `define('CONSTANT', 'value')`
+2. **WordPress options**: Customizer, ACF options page
+3. **theme.json**: Gutenberg editor settings
+4. **wp-config.php**: WordPress-level config (not theme-specific)
+
+**Example - Adding new config**:
+
+```php
+// If theme-specific constant
+define( 'curixus_API_VERSION', '1.0' );
+
+// If user-editable setting
+// Add to ACF options page (Site Settings)
+// Access: get_field('setting_name', 'option')
+```
+
+## API Integrations (Future)
+
+**If adding external API**:
+
+1. Create integration file: `inc/integrations/{service-name}.php`
+2. Store credentials in wp-config.php (NOT theme files)
+3. Use WordPress HTTP API (`wp_remote_get()`, `wp_remote_post()`)
+4. Handle errors gracefully
+5. Add caching (transients) for API responses
+6. Document in `./docs/04-integrations-and-infra.md`
+
+**Pattern**:
+
+```php
+function curixus_project_fetch_api_data( $endpoint ) {
+    $transient_key = 'api_data_' . md5($endpoint);
+    $cached = get_transient($transient_key);
+    
+    if ( false !== $cached ) {
+        return $cached;
+    }
+    
+    $response = wp_remote_get( API_BASE_URL . $endpoint, [
+        'timeout' => 15,
+        'headers' => [
+            'Authorization' => 'Bearer ' . API_KEY
+        ]
+    ]);
+    
+    if ( is_wp_error($response) ) {
+        error_log('API Error: ' . $response->get_error_message());
+        return false;
+    }
+    
+    $data = json_decode( wp_remote_retrieve_body($response), true );
+    set_transient($transient_key, $data, HOUR_IN_SECONDS);
+    
+    return $data;
+}
+```
+
+## Performance Considerations
+
+**Asset optimization**:
+- Use `filemtime()` for cache busting (already implemented)
+- Enqueue scripts in footer (third parameter = true)
+- Minimize HTTP requests (combine when possible)
+
+**Google Fonts optimization** (already implemented):
+- `preconnect` for DNS prefetching
+- `display=swap` for FOIT prevention
+
+**SVG sprites** (already implemented):
+- Reduces HTTP requests vs individual files
+- Use `sprite_svg()` helper
+
+## Security
+
+**SVG uploads**:
+- Restricted to administrators only (already implemented in `inc/helpers.php`)
+- Never allow untrusted users to upload SVG
+
+**External API calls**:
+- Always sanitize/validate responses
+- Use nonces for form submissions
+- Check user capabilities
+- Escape output
+
+## Testing Integrations
+
+**Before committing integration changes**:
+
+1. Test with library/service actually available
+2. Test with library/service unavailable (graceful degradation)
+3. Check browser console for errors
+4. Verify no conflicts with existing features
+5. Test on staging environment first
+
+## Documentation Requirements
+
+**When adding new integration**:
+
+Update these files:
+1. `./docs/04-integrations-and-infra.md` - Add to integrations list
+2. `./docs/00-overview.md` - Add to tech stack if significant
+3. This rule file - Add to "Current Integrations" list
+
+Include:
+- Purpose and why chosen
+- Version number
+- Configuration location
+- Usage examples
+- When to use vs alternatives
+
+## Reference
+
+Full integration details: `./docs/04-integrations-and-infra.md`

@@ -1,0 +1,107 @@
+---
+description: Rules for creating and modifying ACF-powered Gutenberg blocks
+globs: blocks/**/*.php, blocks/**/*.json, blocks/**/*.scss
+alwaysApply: false
+---
+
+# ACF Block Development
+
+## Block Structure (Required Files)
+
+Every block in `/blocks/{block-slug}/` MUST have:
+1. `block.json` - Block registration (ACF mode, supports, category)
+2. `block-render.php` - Server-side rendering template
+3. `style.scss` - Block-specific styles (compiled to style.css)
+
+**Auto-registration**: Blocks automatically register via `inc/acf.php` (no manual registration needed)
+
+## block.json Pattern
+
+```json
+{
+  "name": "yh/{block-slug}",
+  "title": "Block Title",
+  "category": "yh_project",
+  "acf": {
+    "mode": "preview",
+    "blockVersion": 3,
+    "renderTemplate": "block-render.php"
+  },
+  "supports": {
+    "anchor": true,
+    "spacing": { "margin": true, "padding": true }
+  },
+  "style": ["file:./style.css"]
+}
+```
+
+## block-render.php Pattern
+
+**Standard structure** (see `./docs/02-conventions.md`):
+
+```php
+<?php
+// 1. Generate unique ID
+$id = 'block-name-' . $block['id'];
+if ( ! empty($block['anchor'] ) ) {
+    $id = $block['anchor'];
+}
+
+// 2. Build classes
+$classes = 'block-base-class';
+if ( ! empty( $block['className'] ) ) {
+    $classes .= ' ' . $block['className'];
+}
+
+// 3. Get wrapper attributes
+$wrapper_attributes = get_block_wrapper_attributes(['class' => $classes]);
+
+// 4. Preview image support
+if (isset( $block['data']['preview_image_help'] )): 
+    // Show screenshot
+else:
+    // Render block content with ACF fields
+endif;
+?>
+```
+
+## ACF Field Access
+
+- `get_field('field_name')` - Get field value
+- `the_field('field_name')` - Echo field value
+- `get_sub_field('field_name')` - Inside repeater
+- `have_rows('repeater_name')` - Check and loop repeater
+
+**Always escape output**: `esc_html()`, `esc_attr()`, `esc_url()`
+
+## Block Independence
+
+- Blocks MUST NOT depend on other blocks
+- Blocks CAN use helpers from `inc/helpers.php` (sprite_svg, get_excerpt_trim, etc.)
+- Keep block styles isolated (use BEM with block-specific prefix)
+
+## Modal Integration
+
+For blocks with modals (like button-group):
+
+```php
+global $modal_storage;
+$modal_storage = $modal_storage ?? [];
+
+// Add modal to storage (renders in footer automatically)
+$modal_storage[] = [
+    'id' => 'modal-' . $select_modal,
+    'modal_id' => $select_modal
+];
+```
+
+## Versioning Impact
+
+- **Adding fields**: Safe, backward compatible (MINOR version)
+- **Removing/renaming fields**: Breaking change (MAJOR version)
+- Check `./docs/06-versioning-and-evolution.md` before structural changes
+
+## Reference Examples
+
+- Button Group: `blocks/button-group/` - Complex with modals, icons, repeater
+- Card Tiles: `blocks/card-tiles/` - Simple repeater with image/text

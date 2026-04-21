@@ -1,0 +1,166 @@
+---
+description: Semantic versioning rules and how to safely evolve the theme without breaking changes
+globs:
+alwaysApply: false
+---
+
+# Versioning and Safe Evolution
+
+**Agent-requested rule** - Load when working on version bumps or major changes.
+
+## Semantic Versioning
+
+**Format**: `MAJOR.MINOR.PATCH` (e.g., 1.2.3)
+
+**PATCH** (1.0.0 → 1.0.1):
+- Bug fixes
+- Security patches
+- Minor CSS/JS adjustments
+- Performance improvements
+- Documentation updates
+
+**MINOR** (1.0.0 → 1.1.0):
+- New blocks added
+- New helper functions
+- New template files
+- New ACF field groups (backward compatible)
+- Adding fields to existing blocks (backward compatible)
+
+**MAJOR** (1.0.0 → 2.0.0):
+- Removed blocks or functions
+- Changed function signatures
+- Removed/renamed ACF fields (breaks existing content)
+- Changed CSS class names (breaks custom CSS)
+- Changed template hierarchy
+- WordPress/PHP minimum version change
+
+## Where to Update Version
+
+**When bumping version**:
+
+1. `functions.php` - `_S_VERSION` constant
+2. `style.css` - Theme header comment
+3. `package.json` - version field
+4. Git tag - `git tag -a v1.2.0 -m "Release 1.2.0"`
+
+## ACF Field Changes
+
+**Safe (MINOR version)**:
+- Add new field to existing group
+- Add new field group
+- Change field label (UI only)
+- Change field instructions
+- Change default value
+
+**Breaking (MAJOR version)**:
+- Delete field
+- Rename field name/key
+- Change field type (e.g., text → wysiwyg)
+- Delete field group
+
+**Migration required** - see `./docs/06-versioning-and-evolution.md` for migration patterns.
+
+## Block Changes
+
+**Adding fields to block**:
+- Backward compatible (old blocks work, field just empty)
+- Check field exists before using:
+
+```php
+if ( get_field('new_option') ) {
+    // Render new feature
+}
+```
+
+**Removing fields from block**:
+- Breaking change
+- Audit all pages using block
+- Bump MAJOR version
+- Document in changelog
+
+## CSS Class Changes
+
+**Safe additions**:
+
+```scss
+// ✅ Add new component
+.new-component { }
+
+// ✅ Add new modifier
+.btn--new-style { }
+```
+
+**Breaking changes (avoid or deprecate first)**:
+
+```scss
+// ❌ Rename class (breaks templates)
+.btn → .button
+
+// Better: Add new, keep old temporarily
+.btn,
+.button {
+  // Styles
+}
+// Mark .btn as deprecated in comment
+// Remove in next MAJOR version
+```
+
+## Before Making Breaking Changes
+
+1. Check `./docs/06-versioning-and-evolution.md` for safe patterns
+2. Consider deprecation strategy (mark deprecated in MINOR, remove in MAJOR)
+3. Document migration path for users
+4. Test with existing content (staging environment)
+
+## Asset Cache Busting
+
+**Already handled** via `filemtime()` - no manual version management needed:
+
+```php
+filemtime(get_template_directory() . '/css/style.css')
+```
+
+**Don't change this pattern** unless cache strategy changes.
+
+## Backward Compatibility Checklist
+
+Before deploying version:
+
+- [ ] Existing pages render correctly
+- [ ] Existing blocks display properly
+- [ ] ACF fields accessible
+- [ ] Navigation works
+- [ ] Modals open
+- [ ] Background animations functional
+- [ ] Mobile responsive
+- [ ] No console errors
+
+## Release Process
+
+1. Update version in files (functions.php, style.css, package.json)
+2. Update CHANGELOG.md (if exists, see docs for TODO)
+3. Commit: `git commit -m "Release version 1.2.0"`
+4. Tag: `git tag -a v1.2.0 -m "Release notes"`
+5. Push with tags: `git push origin main --tags`
+
+## Rollback Strategy
+
+If update breaks production:
+
+```bash
+# Option 1: Revert
+git revert HEAD
+
+# Option 2: Checkout previous tag
+git checkout v1.0.0
+
+# Option 3: Restore from backup
+```
+
+## Full Reference
+
+See `./docs/06-versioning-and-evolution.md` for:
+- Detailed migration patterns
+- Deprecation timeline
+- Database schema changes (if needed)
+- Safe extension strategies

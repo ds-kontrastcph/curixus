@@ -1,0 +1,14 @@
+{
+  "name": "curixus",
+  "version": "1.0.0",
+  "description": "The following steps will guide you so that you can have a development environment on your machine.",
+  "main": "index.js",
+  "scripts": {
+    "compile-scss": "sass blocks:blocks scss:css --watch"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.94.0"
+  }
+}

@@ -1,0 +1,160 @@
+---
+description: Enforce DRY principle by checking reuse catalog before creating new components or helpers
+globs:
+alwaysApply: true
+---
+
+# Enforce Reuse (DRY Principle)
+
+## Check Before Creating
+
+**BEFORE writing any new code**, check if it already exists:
+
+1. **UI Components**: `./docs/03-reuse-catalog.md` - UI Components section
+2. **Helpers/Utilities**: `./docs/03-reuse-catalog.md` - Shared Helpers section
+3. **SCSS Mixins**: `scss/_variable.scss` and `./docs/03-reuse-catalog.md`
+4. **Layout Components**: Header, footer, navigation patterns in docs
+5. **Template Tags**: `inc/template-tags.php`
+
+## Existing Components (Use These)
+
+**UI Components**:
+- Buttons: `.btn`, `.btn--primary`, `.btn--secondary`
+- Button groups: Use Button Group block
+- Card grids: Use Card Tiles block
+- Glass effect: `.glass-effect` class
+- Container: `.container` class
+- Background sections: Core/group with "Background section" style
+
+**Helpers (inc/helpers.php)**:
+- `sprite_svg($name, $width, $height, $return)` - SVG icons
+- `get_excerpt_trim($num_words, $more, $post_id)` - Excerpts
+- `extract_youtube_id($url)` - YouTube video IDs
+- Modal system: `global $modal_storage` pattern
+
+**SCSS Mixins (scss/_variable.scss)**:
+- `@include mobile` - Responsive breakpoint (max-width: 767px)
+- `@include tablet` - Responsive breakpoint (max-width: 991px)
+- `@include desktop` - Responsive breakpoint (max-width: 1350px)
+- `@include font-rem-min($size, $min-size)` - Responsive font sizing
+- `@function px-to-rem($size)` - Convert pixels to rem
+
+**Template Tags (inc/template-tags.php)**:
+- `curixus_project_posted_on()` - Post date
+- `curixus_project_posted_by()` - Post author
+- `curixus_project_post_thumbnail()` - Post thumbnail
+
+## When Creating New Code
+
+**If functionality exists**:
+- Use existing implementation
+- Extend if needed (add parameters, options)
+- Don't duplicate
+
+**If functionality doesn't exist**:
+- Check if WordPress core provides it
+- Check if existing helper can be extended
+- Create new helper/component following conventions
+- Add to appropriate location:
+  - Helpers: `inc/helpers.php`
+  - SCSS mixins: `scss/_variable.scss`
+  - UI components: `scss/_components.scss`
+  - Blocks: New directory in `/blocks/`
+
+## Anti-Patterns (Prohibited)
+
+❌ **Creating new button styles** when `.btn` variants exist  
+✅ Add new modifier: `.btn--new-style`
+
+❌ **Custom SVG rendering** when `sprite_svg()` exists  
+✅ Add icon to sprite, use `sprite_svg()`
+
+❌ **Inline modal HTML** when modal system exists  
+✅ Use global `$modal_storage` + Modals CPT
+
+❌ **Raw media queries** when SCSS mixins exist  
+✅ Use `@include mobile`, `@include tablet`, etc.
+
+❌ **Hardcoded excerpt trimming** when helper exists  
+✅ Use `get_excerpt_trim()`
+
+❌ **Duplicate background animation** when system exists  
+✅ Use Background Section block style
+
+❌ **Custom responsive font logic** when mixin exists  
+✅ Use `@include font-rem-min($size, $min-size)`
+
+## Code Duplication Rule
+
+**If code appears 2+ times**: Extract to reusable helper/mixin/component
+
+**Example - SCSS**:
+
+```scss
+// ❌ Bad - Duplicated in multiple places
+.card-1 {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+.card-2 {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+// ✅ Good - Extract to mixin
+@mixin card-shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+.card-1 { @include card-shadow; }
+.card-2 { @include card-shadow; }
+```
+
+**Example - PHP**:
+
+```php
+// ❌ Bad - Repeated logic
+echo wp_trim_words( get_the_excerpt($post_id), 20, '...' );
+// ... same code in multiple templates
+
+// ✅ Good - Use existing helper
+echo get_excerpt_trim(20, '...', $post_id);
+```
+
+## Verification Checklist
+
+Before submitting code, verify:
+
+- [ ] Checked `./docs/03-reuse-catalog.md` for existing implementations
+- [ ] No duplicate helpers/functions (searched inc/helpers.php)
+- [ ] No duplicate components (searched scss/_components.scss)
+- [ ] No duplicate mixins (searched scss/_variable.scss)
+- [ ] Used existing blocks when appropriate
+- [ ] Extended existing code rather than duplicating
+- [ ] Added new reusable code to appropriate location
+
+## When to Create New vs Extend
+
+**Create new** when:
+- Functionality is fundamentally different
+- Existing implementation can't be reasonably extended
+- Separation of concerns requires it
+
+**Extend existing** when:
+- Functionality is similar with variations
+- Can add optional parameters to existing function
+- Can add CSS modifier to existing component
+- Can add new variant to existing pattern
+
+## Reference
+
+**Full catalog**: `./docs/03-reuse-catalog.md`  
+**Anti-patterns**: `./docs/05-style-and-anti-patterns.md`  
+**Conventions**: `./docs/02-conventions.md`
+
+## Use MCP Context7
+
+When unsure if functionality exists:
+- Use MCP context7 to search codebase for similar patterns
+- Search docs for existing implementations
+- Avoid reinventing the wheel

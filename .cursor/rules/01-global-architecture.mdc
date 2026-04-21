@@ -1,0 +1,57 @@
+---
+description: Core architecture principles and layer boundaries for curixus Project WordPress theme
+globs:
+alwaysApply: true
+---
+
+# Global Architecture Rules
+
+## Primary Documentation Reference
+
+- **ALWAYS** consult `@./docs` as primary context before making architectural decisions
+- Read `./docs/01-architecture.md` for layer boundaries and module dependencies
+- Check `./docs/03-reuse-catalog.md` BEFORE creating new components, helpers, or utilities
+
+## Architecture Layers (Strict Boundaries)
+
+**5 layers - respect dependencies**:
+1. **Presentation** (templates/*.php, template-parts/) → calls Application layer
+2. **Block** (/blocks/*/) → isolated, must NOT depend on other blocks
+3. **Application** (/inc/*.php) → provides services to Presentation and Blocks
+4. **Data** (/acf-json/*.json) → ACF field definitions
+5. **Asset** (/scss/, /css/, /js/) → styling and interactivity
+
+**Prohibited**:
+- Blocks depending on other blocks
+- Templates containing business logic (use inc/helpers.php)
+- Helper functions depending on specific templates
+- Circular SCSS imports
+
+## Hard Dependencies
+
+- **WordPress 6.2+** and **PHP 8.0+** are minimum requirements
+- **ACF plugin** is REQUIRED for blocks and custom fields
+- All custom blocks are ACF-powered (auto-registered from /blocks/)
+- jQuery is available (WordPress core dependency)
+
+## Tech Stack Reality
+
+- SCSS compiled in dev ONLY (via npm); compiled CSS committed to repo
+- NO build step on production servers
+- NO .env files (use WordPress options, Customizer, ACF options, theme.json)
+- Assets versioned via filemtime() for cache busting
+
+## MCP Context7 Integration
+
+- When working with external libraries (Fancybox, ACF API, WordPress hooks) NOT documented in ./docs:
+  - Use MCP context7 to fetch official documentation
+  - Verify function signatures and options from real sources
+  - NEVER fabricate API details
+- If MCP context7 unavailable: mark with TODO and ask user for clarification
+
+## Before Writing Code
+
+1. Check `./docs/03-reuse-catalog.md` for existing implementations
+2. Check `./docs/02-conventions.md` for naming and structure patterns
+3. Verify layer placement in `./docs/01-architecture.md`
+4. Follow existing patterns in similar files

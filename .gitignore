@@ -1,0 +1,11 @@
+# # Log files
+*.log
+*.po~
+*.pot~
+languages/*.po~
+languages/*.pot~
+.DS_Store
+css/*.css.map
+blocks/*/*.css.map
+node_modules/
+package-lock.json

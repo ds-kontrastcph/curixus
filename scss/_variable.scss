@@ -1,0 +1,112 @@
+@mixin mf-wide {
+	@media only screen and (min-width: 1921px) {
+		@content;
+	}
+}
+@mixin desktop-1400 {
+	@media only screen and (max-width: 1400px) {
+		@content;
+	}
+}
+@mixin desktop-1100 {
+	@media only screen and (max-width: 1100px) {
+		@content;
+	}
+}
+@mixin desktop-1024 {
+	@media only screen and (max-width: 1024px) {
+		@content;
+	}
+}
+@mixin min-tablet {
+	@media only screen and (min-width: 992px) {
+		@content;
+	}
+}
+@mixin mobile-425 {
+	@media only screen and (max-width: 425px) {
+		@content;
+	}
+}
+@mixin mobile-375 {
+	@media only screen and (max-width: 375px) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media only screen and (max-width: 1350px) {
+		@content;
+	}
+}
+@mixin desktop-sm {
+	@media only screen and (max-width: 1200px) {
+		@content;
+	}
+}
+@mixin desktop-xs {
+	@media only screen and (max-width: 1024px) {
+		@content;
+	}
+}
+@mixin tablet {
+	@media only screen and (max-width: 991px) {
+		@content;
+	}
+}
+@mixin mobile {
+	@media only screen and (max-width: 767px) {
+		@content;
+	}
+}
+@mixin mobile-sm {
+	@media only screen and (max-width: 575px) {
+		@content;
+	}
+}
+@mixin mf-desktop {
+	@media only screen and (min-width: 992px) {
+		@content;
+	}
+}
+@mixin mf-tablet {
+	@media only screen and (min-width: 768px) {
+		@content;
+	}
+}
+
+$base-font-size: 16; 
+@function px-to-rem($size) {
+  @return $size / $base-font-size * 1rem;
+}
+
+// Set font-size in rem but prevent it from shrinking below a pixel minimum.
+// Example: @include font-rem-min(16, 12); // 16px at 1rem, min 12px
+@mixin font-rem-min($size, $min-size) {
+  $size-rem: px-to-rem($size);
+  $min-px: if(unitless($min-size), $min-size * 1px, $min-size);
+  font-size: clamp($min-px, $size-rem, $size-rem);
+}
+
+$font-family-primary: "Manrope", sans-serif;
+$font-family-secondary: "Manrope", sans-serif;
+
+
+$clr-base: #0A1428;
+
+$white: #FFFFFF;
+$primary: #FFDD0C;
+
+
+$clr-primary: #FFDD0C; //yellow
+
+$clr-coral: #F88673;
+$clr-violet: #926FDE;
+$clr-blue: #6284C8;
+$clr-green: #54F0A3;
+$clr-white: #FAFAFA; //white
+$clr-navy: #0A1428; //navy
+$clr-grey: #B2B8BE;
+$clr-light-grey: #F3F3F3;
+
+$clr-balck: #000; //black

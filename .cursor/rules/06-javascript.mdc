@@ -1,0 +1,255 @@
+---
+description: JavaScript development rules for theme scripts and Gutenberg editor enhancements
+globs: js/**/*.js
+alwaysApply: false
+---
+
+# JavaScript Development
+
+## Code Organization
+
+**Separate files by feature** (not one monolithic file):
+
+- `js/jquery.main.js` - Main theme functionality and Fancybox init
+- `js/background-sections.js` - Scroll-driven background system
+- `js/block-styles.js` - Gutenberg editor enhancements
+
+**Each feature gets its own file** when adding new functionality.
+
+## Vanilla JS (ES5+ Compatible)
+
+**Use IIFE** to avoid global scope pollution:
+
+```javascript
+(function () {
+  'use strict';
+  
+  // Your code here
+  function init() {
+    // Initialization
+  }
+  
+  // DOM ready
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+```
+
+## Naming Conventions
+
+**Variables/Functions**: camelCase
+
+```javascript
+const bgEl = document.getElementById("site-bg");
+const activeLayer = layers[nextKey];
+let transitionInProgress = false;
+
+function getVariantFromEl(el) { }
+function beginVariantTransition(bgEl, layers, nextVariant) { }
+```
+
+**Constants**: SCREAMING_SNAKE_CASE
+
+```javascript
+const TRANSITION_MS = 900;
+const VARIANTS = [
+  { slug: "yellow", label: "Yellow" },
+  // ...
+];
+```
+
+## jQuery Usage
+
+- jQuery available (WordPress core dependency)
+- Use `jQuery` or pass `$` to IIFE:
+
+```javascript
+jQuery(function($) {
+  // $ is safe inside this scope
+  $('.element').on('click', function() { });
+});
+```
+
+## Fancybox Integration
+
+**In `js/jquery.main.js`**:
+
+```javascript
+Fancybox.bind("[data-fancybox]", {
+  // Configuration options
+});
+```
+
+**In HTML** (blocks/templates):
+
+```html
+<button data-fancybox data-src="#modal-id">Open Modal</button>
+```
+
+## Gutenberg Editor JavaScript
+
+**In `js/block-styles.js`**:
+
+```javascript
+/* global wp */
+(function () {
+  if (!window.wp) return;
+  
+  const { addFilter } = wp.hooks;
+  const { createHigherOrderComponent } = wp.compose;
+  // ... Gutenberg APIs
+})();
+```
+
+**For block styles registration**:
+
+```javascript
+wp.domReady(function () {
+  if (wp.blocks && wp.blocks.registerBlockStyle) {
+    wp.blocks.registerBlockStyle("core/group", {
+      name: "background-section",
+      label: "Background section"
+    });
+  }
+});
+```
+
+## DOM Selectors
+
+**Prefer data attributes** for JS hooks:
+
+```javascript
+// Good - semantic, clear purpose
+document.querySelector('[data-fancybox]');
+document.querySelectorAll('[data-bg-variant]');
+
+// Avoid - couples JS to styling
+document.querySelector('.btn-primary');
+```
+
+## Performance Considerations
+
+**Use Intersection Observer** (not scroll events):
+
+```javascript
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Handle intersection
+      }
+    });
+  },
+  {
+    root: null,
+    rootMargin: "-30% 0px -30% 0px",
+    threshold: [0, 0.25, 0.5, 0.75, 1]
+  }
+);
+
+sections.forEach((el) => observer.observe(el));
+```
+
+**Check for prefers-reduced-motion**:
+
+```javascript
+function prefersReducedMotion() {
+  return window.matchMedia && 
+         window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+if (prefersReducedMotion()) {
+  // Disable or simplify animations
+}
+```
+
+## No Magic Numbers
+
+```javascript
+// ❌ Bad
+setTimeout(callback, 900);
+rootMargin: "-30% 0px -30% 0px"
+
+// ✅ Good
+const TRANSITION_MS = 900;
+const INTERSECTION_MARGIN = "-30% 0px -30% 0px";
+
+setTimeout(callback, TRANSITION_MS);
+rootMargin: INTERSECTION_MARGIN
+```
+
+## Creating Public APIs (If Needed)
+
+**Namespace under theme object**:
+
+```javascript
+window.curixusTheme = window.curixusTheme || {};
+
+window.curixusTheme.bgSections = {
+  getVariant: getVariantFromEl,
+  setVariant: function(variant) { /* ... */ }
+};
+```
+
+**Document any public API** in code comments.
+
+## Enqueuing JavaScript
+
+**In `inc/scripts.php`** ONLY:
+
+```php
+wp_enqueue_script( 
+  'custom', 
+  get_template_directory_uri() . '/js/custom.js', 
+  array('jquery'), // Dependencies
+  filemtime(get_template_directory() . '/js/custom.js'),
+  true // In footer
+);
+```
+
+## Existing Functionality (Don't Duplicate)
+
+**Check `./docs/03-reuse-catalog.md`** for:
+- Background animation system (already implemented)
+- Fancybox modal integration (already configured)
+- Gutenberg block styles (pattern established)
+
+## Error Handling
+
+```javascript
+try {
+  // Potentially failing code
+  const element = document.querySelector('#required');
+  if (!element) {
+    throw new Error('Required element not found');
+  }
+} catch (error) {
+  console.error('curixus Theme Error:', error);
+  // Graceful degradation
+}
+```
+
+## Comments
+
+- ALL comments in English
+- Document complex logic
+- Explain WHY, not WHAT (code shows what)
+
+```javascript
+// Good - explains reasoning
+// Use two-layer crossfade to prevent flickering during rapid scroll changes
+beginVariantTransition(bgEl, layers, nextVariant);
+
+// Bad - states obvious
+// Call the begin variant transition function
+beginVariantTransition(bgEl, layers, nextVariant);
+```
+
+## Reference Examples
+
+- Background system: `js/background-sections.js`
+- Block editor: `js/block-styles.js`
+- Main theme: `js/jquery.main.js`

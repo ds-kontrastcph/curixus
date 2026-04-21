@@ -1,0 +1,209 @@
+---
+description: SCSS development rules - BEM naming, responsive mixins, variable usage, component patterns
+globs: scss/**/*.scss, blocks/**/*.scss
+alwaysApply: false
+---
+
+# SCSS and Styling
+
+## BEM Naming (Strict)
+
+**Pattern**: `.block__element--modifier`
+
+```scss
+// Block
+.site-header { }
+.btn-group { }
+
+// Element
+.site-header__wrap { }
+.btn-group__item { }
+
+// Modifier
+.btn--primary { }
+.site-header--dark { }
+
+// Combined
+.btn__icon--right { }
+```
+
+**Benefits**: Prevents cascade conflicts, clear component boundaries, safe modifications
+
+## Responsive Breakpoints (ALWAYS Use Mixins)
+
+**From `scss/_variable.scss`** - use these, NOT raw media queries:
+
+```scss
+@include desktop    { /* max-width: 1350px */ }
+@include desktop-sm { /* max-width: 1200px */ }
+@include tablet     { /* max-width: 991px */ }
+@include mobile     { /* max-width: 767px */ }
+@include mobile-sm  { /* max-width: 575px */ }
+
+// Min-width
+@include mf-desktop { /* min-width: 992px */ }
+@include mf-tablet  { /* min-width: 768px */ }
+```
+
+**Example**:
+
+```scss
+.element {
+    font-size: 24px;
+    
+    @include tablet {
+        font-size: 20px;
+    }
+    
+    @include mobile {
+        font-size: 18px;
+    }
+}
+```
+
+## Color Variables (Use, Don't Hardcode)
+
+**From `scss/_variable.scss`**:
+
+```scss
+$clr-base: #0A1428;       // Dark blue
+$clr-primary: #FFDD0C;    // Yellow
+$clr-coral: #F88673;
+$clr-violet: #926FDE;
+$clr-blue: #6284C8;
+$clr-green: #54F0A3;
+$clr-white: #FAFAFA;
+$clr-navy: #0A1428;
+```
+
+**Use**: `color: $clr-primary;`  
+**NOT**: `color: #FFDD0C;`
+
+## Font Variables
+
+```scss
+$font-family-primary: 'Montserrat', sans-serif;
+$font-family-secondary: 'Bricolage Grotesque', sans-serif;
+```
+
+## Font Size Helper
+
+```scss
+// Function
+@function px-to-rem($size) { @return $size / 16 * 1rem; }
+
+// Mixin with minimum
+@mixin font-rem-min($size, $min-size) {
+  $size-rem: px-to-rem($size);
+  $min-px: if(unitless($min-size), $min-size * 1px, $min-size);
+  font-size: clamp($min-px, $size-rem, $size-rem);
+}
+
+// Usage
+.title {
+    @include font-rem-min(24, 18); // 24px ideal, min 18px
+}
+```
+
+## Import Order (style.scss)
+
+**MUST follow this order**:
+
+```scss
+@import '_variable';      // 1. Variables & mixins
+@import "_reset";         // 2. Reset
+@import "_components";    // 3. Components
+@import "_header";        // 4. Layout sections
+@import "_footer";
+@import "_bg";            // 5. Effects
+@import "_structure";     // 6. Structure last
+```
+
+## Creating Reusable Mixins
+
+**Add to `scss/_variable.scss`**:
+
+```scss
+@mixin component-pattern {
+    // Reusable styles
+    // Use in multiple components
+}
+```
+
+**Check `./docs/03-reuse-catalog.md`** for existing mixins before creating new ones.
+
+## Block-Specific Styles
+
+- Block styles in `blocks/{block-name}/style.scss`
+- Use BEM with block-specific prefix: `.card-tiles__item`, `.btn-group__item`
+- Keep isolated (don't leak to global scope)
+- Avoid `!important` unless absolutely necessary
+
+## Component Styles
+
+**In `scss/_components.scss`** for shared UI:
+- Buttons (`.btn`, `.btn--primary`)
+- Glass effect (`.glass-effect`)
+- Shared patterns used across multiple blocks/pages
+
+## Existing Components (Reuse)
+
+**Check `./docs/03-reuse-catalog.md`** before creating:
+- Buttons (`.btn` with variants)
+- Glass effect (`.glass-effect`)
+- Container (`.container`)
+- Background variants (`.bg-variant--{name}`)
+
+## No Magic Numbers
+
+```scss
+// ❌ Bad
+.header {
+    height: 80px;
+    padding: 20px 40px;
+}
+
+// ✅ Good
+$header-height: 80px;
+$header-padding-vertical: 20px;
+$header-padding-horizontal: 40px;
+
+.header {
+    height: $header-height;
+    padding: $header-padding-vertical $header-padding-horizontal;
+}
+```
+
+## DRY in SCSS
+
+**If styles repeat 2+ times**:
+
+```scss
+// Extract to mixin
+@mixin card-shadow {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    
+    &:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+}
+
+// Use
+.card-tiles__item {
+    @include card-shadow;
+}
+```
+
+## Compilation
+
+- SCSS compiles via npm: `npm run compile-scss`
+- Runs in dev only (watch mode)
+- Compiled CSS committed to repo
+- Source maps generated automatically
+
+## Reference
+
+- Variables and mixins: `scss/_variable.scss`
+- Responsive patterns: `./docs/02-conventions.md`
+- Component catalog: `./docs/03-reuse-catalog.md`

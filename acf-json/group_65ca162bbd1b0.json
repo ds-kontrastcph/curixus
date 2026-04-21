@@ -1,0 +1,464 @@
+{
+    "key": "group_65ca162bbd1b0",
+    "title": "Block: Button Group",
+    "fields": [
+        {
+            "key": "field_65ca162c9266e",
+            "label": "Direction",
+            "name": "direction",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "horizontal": "horizontal",
+                "vertical": "vertical"
+            },
+            "default_value": "horizontal",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_65ca168bd92af",
+            "label": "Gap",
+            "name": "gap",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 24,
+            "min": 0,
+            "max": 120,
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": "px"
+        },
+        {
+            "key": "field_65ca16b5d92b0",
+            "label": "Alignment",
+            "name": "alignment",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "<span class=\"dashicons dashicons-editor-alignleft\"><\/span>",
+                "center": "<span class=\"dashicons dashicons-editor-aligncenter\"><\/span>",
+                "right": "<span class=\"dashicons dashicons-editor-alignright\"><\/span>"
+            },
+            "default_value": "left",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_65ca16ddd92b1",
+            "label": "Buttons",
+            "name": "buttons",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Button",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66ffd6eb0a363",
+                    "label": "Has modal",
+                    "name": "has_modal",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "parent_repeater": "field_65ca16ddd92b1"
+                },
+                {
+                    "key": "field_65ca16e8d92b2",
+                    "label": "Button",
+                    "name": "button",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66ffd6eb0a363",
+                                "operator": "!=",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "allow_in_bindings": 1,
+                    "parent_repeater": "field_65ca16ddd92b1"
+                },
+                {
+                    "key": "field_66ffd71b0a364",
+                    "label": "Button text",
+                    "name": "button_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66ffd6eb0a363",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_65ca16ddd92b1"
+                },
+                {
+                    "key": "field_66ffd7310a365",
+                    "label": "Select modal",
+                    "name": "select_modal",
+                    "aria-label": "",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66ffd6eb0a363",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "modals"
+                    ],
+                    "post_status": "",
+                    "taxonomy": "",
+                    "return_format": "id",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "bidirectional": 0,
+                    "ui": 1,
+                    "bidirectional_target": [],
+                    "parent_repeater": "field_65ca16ddd92b1"
+                },
+                {
+                    "key": "field_65ca1705d92b3",
+                    "label": "Button style",
+                    "name": "button_style",
+                    "aria-label": "",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "admin_column_enabled": 0,
+                    "choices": {
+                        "primary": "<span class=\"color-test-item\" style=\"background-color: #FFDD0C;\"><\/span> Primary",
+                        "secondary": "<span class=\"color-test-item\" style=\"background-color: #FAFAFA;\"><\/span> Secondary",
+                        "blue": "<span class=\"color-test-item\" style=\"background-color: #6284C8;\"><\/span> Blue",
+                        "dark": "<span class=\"color-test-item\" style=\"background-color: #1A1825;\"><\/span> Dark",
+                        "transparent": "<span class=\"color-test-item\" ><\/span> Transparent",
+                        "coral": "<span class=\"color-test-item\" style=\"background-color: #F88673;\"><\/span> Coral",
+                        "violet": "<span class=\"color-test-item\" style=\"background-color: #926FDE;\"><\/span> Violet",
+                        "green": "<span class=\"color-test-item\" style=\"background-color: #54F0A3;\"><\/span> Green",
+                        "inline-gradient": "<span class=\"color-test-item\" style=\"background: linear-gradient(82deg, #FFDD0C 6.18%, #FFA600 48.98%, #FF790C 89.99%);\"><\/span> Gradient"
+                    },
+                    "default_value": "primary",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "allow_in_bindings": 1,
+                    "layout": "vertical",
+                    "save_other_choice": 0,
+                    "parent_repeater": "field_65ca16ddd92b1"
+                },
+                {
+                    "key": "field_691c70ba45800",
+                    "label": "Button size",
+                    "name": "button_size",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "admin_column_enabled": 0,
+                    "choices": {
+                        "sm": "Small",
+                        "md": "Medium",
+                        "lg": "Big"
+                    },
+                    "default_value": "md",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "layout": "horizontal",
+                    "parent_repeater": "field_65ca16ddd92b1"
+                },
+                {
+                    "key": "field_65ca1754d92b4",
+                    "label": "Button icon",
+                    "name": "button_icon",
+                    "aria-label": "",
+                    "type": "svg_icon",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": [],
+                    "allow_null": 1,
+                    "multiple": 0,
+                    "default_path": "images",
+                    "svg_files": "images\/icons.svg",
+                    "allow_in_bindings": 1,
+                    "choices": {
+                        "icon-down": {
+                            "ID": "icon-down"
+                        },
+                        "icon-up": {
+                            "ID": "icon-up"
+                        },
+                        "icon-cross": {
+                            "ID": "icon-cross"
+                        },
+                        "icon-search": {
+                            "ID": "icon-search"
+                        },
+                        "icon-upload": {
+                            "ID": "icon-upload"
+                        },
+                        "icon-download": {
+                            "ID": "icon-download"
+                        },
+                        "icon-link": {
+                            "ID": "icon-link"
+                        },
+                        "icon-plus": {
+                            "ID": "icon-plus"
+                        },
+                        "icon-arrow": {
+                            "ID": "icon-arrow"
+                        },
+                        "icon-clipboard": {
+                            "ID": "icon-clipboard"
+                        },
+                        "icon-calendar": {
+                            "ID": "icon-calendar"
+                        },
+                        "icon-pin": {
+                            "ID": "icon-pin"
+                        }
+                    },
+                    "ui": 1,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "return_format": "value",
+                    "file": {
+                        "path": "images\/icons.svg"
+                    },
+                    "parent_repeater": "field_65ca16ddd92b1"
+                },
+                {
+                    "key": "field_65ca176fd92b5",
+                    "label": "Icon position",
+                    "name": "icon_position",
+                    "aria-label": "",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "before": "Before text",
+                        "after": "After text"
+                    },
+                    "default_value": "after",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "layout": "vertical",
+                    "save_other_choice": 0,
+                    "parent_repeater": "field_65ca16ddd92b1"
+                },
+                {
+                    "key": "field_69048ce78163d",
+                    "label": "Has min-width",
+                    "name": "has_min-width",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "allow_in_bindings": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "parent_repeater": "field_65ca16ddd92b1"
+                },
+                {
+                    "key": "field_69048d008163e",
+                    "label": "Min width",
+                    "name": "min_width",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_69048ce78163d",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "px",
+                    "parent_repeater": "field_65ca16ddd92b1"
+                },
+                {
+                    "key": "field_67f31a8b0ga01",
+                    "label": "Tracking class",
+                    "name": "ga_tracking_class",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Optional CSS class for analytics (e.g. ga-btn--CONTACT_PRIMARY). Not used for styling.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "ga-btn--EVENT_NAME",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_65ca16ddd92b1"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "yh\/button-group"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1770892200
+}
