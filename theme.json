@@ -39,9 +39,24 @@
 					"slug": "yellow"
 				},
 				{
+					"color": "#FC9700",
+					"name": "Brand Orange",
+					"slug": "brand-orange"
+				},
+				{
 					"color": "#FAFAFA",
 					"name": "Cloud White",
 					"slug": "cloud-white"
+				},
+				{
+					"color": "#10233A",
+					"name": "Footer Dark Blue",
+					"slug": "footer-dark-blue"
+				},
+				{
+					"color": "#778493",
+					"name": "Muted Blue Grey",
+					"slug": "muted-blue-grey"
 				},
 				{
 					"color": "#B2B8BE",
@@ -141,7 +156,7 @@
 			"minHeight": true
 		},
 		"layout": {
-			"contentSize": "1200px",
+			"contentSize": "1320px",
 			"wideSize": "1440px"
 		},
 		"blocks": {
@@ -184,14 +199,14 @@
 		"typography": {
 			"fontFamilies": [
 				{
-					"fontFamily": "'Montserrat', sans-serif",
+					"fontFamily": "'Manrope', sans-serif",
 					"slug": "primary-fonts",
-					"name": "Montserrat"
+					"name": "Manrope"
 				},
 				{
-					"fontFamily": "'Bricolage Grotesque', sans-serif",
+					"fontFamily": "'Manrope', sans-serif",
 					"slug": "secondary-fonts",
-					"name": "Bricolage Grotesque"
+					"name": "Manrope"
 				}
 			],
 			"fontSizes": [
