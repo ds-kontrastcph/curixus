@@ -162,6 +162,17 @@ if ( ! function_exists( 'curixus_project_get_footer_context' ) ) :
 	function curixus_project_get_footer_context() {
 		$footer_logo_id = (int) get_theme_mod( 'footer_logo' );
 		$footer_logo_markup = '';
+		$footer_option_value = static function ( $field_name, $default_value = '' ) {
+			if ( function_exists( 'get_field' ) ) {
+				$field_value = get_field( $field_name, 'option' );
+
+				if ( null !== $field_value && '' !== $field_value ) {
+					return $field_value;
+				}
+			}
+
+			return get_theme_mod( $field_name, $default_value );
+		};
 
 		if ( $footer_logo_id ) {
 			$footer_logo_markup = wp_get_attachment_image(
@@ -175,38 +186,81 @@ if ( ! function_exists( 'curixus_project_get_footer_context' ) ) :
 			);
 		}
 
-		$footer_email = sanitize_email( (string) get_theme_mod( 'footer_email', '' ) );
-
-		$footer_legal_items = array_values(
-			array_filter(
-				array(
-					array(
-						'label' => trim( (string) get_theme_mod( 'footer_copyright', sprintf( '©%s', gmdate( 'Y' ) ) ) ),
-						'url'   => '',
-					),
-					array(
-						'label' => trim( (string) get_theme_mod( 'footer_cvr', __( 'CVR: 12345678', 'curixus' ) ) ),
-						'url'   => '',
-					),
-					array(
-						'label' => trim( (string) get_theme_mod( 'footer_cookie_text', __( 'Cookie policy', 'curixus' ) ) ),
-						'url'   => esc_url( (string) get_theme_mod( 'footer_cookie_url', '' ) ),
-					),
-					array(
-						'label' => trim( (string) get_theme_mod( 'footer_privacy_text', __( 'Privacy policy', 'curixus' ) ) ),
-						'url'   => esc_url( (string) get_theme_mod( 'footer_privacy_url', '' ) ),
-					),
-				),
-				static function ( $item ) {
-					return ! empty( $item['label'] );
-				}
-			)
+		$footer_email = sanitize_email( (string) $footer_option_value( 'footer_email', get_option( 'admin_email' ) ) );
+		$footer_legal_items = array(
+			array(
+				'label'  => sprintf( '©%s', wp_date( 'Y' ) ),
+				'url'    => '',
+				'target' => '',
+			),
 		);
+
+		if ( function_exists( 'get_field' ) ) {
+			$footer_meta_items = get_field( 'footer_meta_items', 'option' );
+
+			if ( is_array( $footer_meta_items ) ) {
+				foreach ( $footer_meta_items as $footer_meta_item ) {
+					$footer_meta_type  = (string) ( $footer_meta_item['footer_meta_item_type'] ?? 'text' );
+					$footer_meta_link  = $footer_meta_item['footer_meta_item_link'] ?? array();
+					$footer_meta_label = '';
+					$footer_meta_url   = '';
+					$footer_meta_target = '';
+
+					if ( 'link' === $footer_meta_type ) {
+						$footer_meta_label  = trim( (string) ( $footer_meta_link['title'] ?? '' ) );
+						$footer_meta_url    = esc_url( (string) ( $footer_meta_link['url'] ?? '' ) );
+						$footer_meta_target = trim( (string) ( $footer_meta_link['target'] ?? '' ) );
+					} else {
+						$footer_meta_label = trim( (string) ( $footer_meta_item['footer_meta_item_label'] ?? '' ) );
+					}
+
+					if ( '' === $footer_meta_label ) {
+						continue;
+					}
+
+					$footer_legal_items[] = array(
+						'label'  => $footer_meta_label,
+						'url'    => $footer_meta_url,
+						'target' => $footer_meta_target,
+					);
+				}
+			}
+		}
+
+		if ( 1 === count( $footer_legal_items ) ) {
+			$footer_legal_items = array_merge(
+				$footer_legal_items,
+				array_values(
+					array_filter(
+						array(
+							array(
+								'label'  => trim( (string) $footer_option_value( 'footer_cvr', __( 'CVR: 12345678', 'curixus' ) ) ),
+								'url'    => '',
+								'target' => '',
+							),
+							array(
+								'label'  => trim( (string) $footer_option_value( 'footer_cookie_text', __( 'Cookie policy', 'curixus' ) ) ),
+								'url'    => esc_url( (string) $footer_option_value( 'footer_cookie_url', '' ) ),
+								'target' => '',
+							),
+							array(
+								'label'  => trim( (string) $footer_option_value( 'footer_privacy_text', __( 'Privacy policy', 'curixus' ) ) ),
+								'url'    => esc_url( (string) $footer_option_value( 'footer_privacy_url', '' ) ),
+								'target' => '',
+							),
+						),
+						static function ( $item ) {
+							return ! empty( $item['label'] );
+						}
+					)
+				)
+			);
+		}
 
 		return array(
 			'logo_markup'   => $footer_logo_markup,
-			'address'       => trim( (string) get_theme_mod( 'footer_address', __( 'Vesterbrogade 149, 1620 Copenhagen V', 'curixus' ) ) ),
-			'contact_label' => trim( (string) get_theme_mod( 'footer_contact_label', __( 'Contact us', 'curixus' ) ) ),
+			'address'       => trim( (string) $footer_option_value( 'footer_address', __( 'Vesterbrogade 149, 1620 Copenhagen V', 'curixus' ) ) ),
+			'contact_label' => trim( (string) $footer_option_value( 'footer_contact_label', __( 'Contact us', 'curixus' ) ) ),
 			'email'         => $footer_email,
 			'email_display' => $footer_email ? antispambot( $footer_email ) : '',
 			'legal_items'   => $footer_legal_items,

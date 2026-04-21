@@ -49,7 +49,7 @@ $curixus_header_classes = array(
 				>
 					<span class="site-header__logo-mark site-header__logo-mark--default">
 						<?php if ( ! empty( $curixus_header_context['default_logo_markup'] ) ) : ?>
-							<?php echo $curixus_header_context['default_logo_markup']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<?php echo wp_kses_post( $curixus_header_context['default_logo_markup'] ); ?>
 						<?php else : ?>
 							<span class="site-header__logo-text"><?php echo esc_html( $curixus_header_context['site_name'] ); ?></span>
 						<?php endif; ?>
@@ -57,9 +57,9 @@ $curixus_header_classes = array(
 
 					<span class="site-header__logo-mark site-header__logo-mark--dark">
 						<?php if ( ! empty( $curixus_header_context['dark_logo_markup'] ) ) : ?>
-							<?php echo $curixus_header_context['dark_logo_markup']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<?php echo wp_kses_post( $curixus_header_context['dark_logo_markup'] ); ?>
 						<?php elseif ( ! empty( $curixus_header_context['default_logo_markup'] ) ) : ?>
-							<?php echo $curixus_header_context['default_logo_markup']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+							<?php echo wp_kses_post( $curixus_header_context['default_logo_markup'] ); ?>
 						<?php else : ?>
 							<span class="site-header__logo-text"><?php echo esc_html( $curixus_header_context['site_name'] ); ?></span>
 						<?php endif; ?>
