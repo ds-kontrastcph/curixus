@@ -32,6 +32,30 @@ function curixus_customize_register( $wp_customize ) {
 		);
 	}
 
+	$wp_customize->add_setting(
+		'dark_header_logo',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'absint',
+			'transport'         => 'refresh',
+		)
+	);
+
+	$wp_customize->add_control(
+		new WP_Customize_Media_Control(
+			$wp_customize,
+			'dark_header_logo',
+			array(
+				'label'       => __( 'Dark header logo', 'curixus' ),
+				'description' => __( 'Used when a template loads the dark header variant.', 'curixus' ),
+				'section'     => 'title_tagline',
+				'settings'    => 'dark_header_logo',
+				'mime_type'   => 'image',
+				'priority'    => 9,
+			)
+		)
+	);
+
 	$wp_customize->add_section(
 		'curixus_footer_section',
 		array(

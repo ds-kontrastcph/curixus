@@ -214,6 +214,57 @@ if ( ! function_exists( 'curixus_project_get_footer_context' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'curixus_project_get_header_context' ) ) :
+	/**
+	 * Build header content for the requested header variant.
+	 *
+	 * @param string $header_variant Header variant slug.
+	 * @return array<string, mixed>
+	 */
+	function curixus_project_get_header_context( $header_variant = 'light' ) {
+		$resolved_variant = 'dark' === $header_variant ? 'dark' : 'light';
+		$default_logo_id  = (int) get_theme_mod( 'custom_logo' );
+		$dark_logo_id     = (int) get_theme_mod( 'dark_header_logo' );
+		$dark_logo_id     = $dark_logo_id ?: $default_logo_id;
+
+		$default_logo_markup = '';
+		$dark_logo_markup    = '';
+
+		if ( $default_logo_id ) {
+			$default_logo_markup = wp_get_attachment_image(
+				$default_logo_id,
+				'full',
+				false,
+				array(
+					'class'   => 'site-header__logo-image',
+					'loading' => false,
+				)
+			);
+		}
+
+		if ( $dark_logo_id ) {
+			$dark_logo_markup = wp_get_attachment_image(
+				$dark_logo_id,
+				'full',
+				false,
+				array(
+					'class'   => 'site-header__logo-image',
+					'loading' => false,
+				)
+			);
+		}
+
+		return array(
+			'variant'             => $resolved_variant,
+			'default_logo_markup' => $default_logo_markup,
+			'dark_logo_markup'    => $dark_logo_markup,
+			'home_url'            => home_url( '/' ),
+			'site_name'           => get_bloginfo( 'name' ),
+			'has_menu'            => has_nav_menu( 'menu-1' ),
+		);
+	}
+endif;
+
 if ( ! function_exists( 'wp_body_open' ) ) :
 	/**
 	 * Shim for sites older than 5.2.
