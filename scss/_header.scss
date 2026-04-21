@@ -27,13 +27,22 @@ body.has-open-header-menu {
 		text-decoration: none;
 	}
 
-	&__container {
+	> .container {
+		max-width: 1680px;
+		padding-inline: 32px;
+
+		@include desktop {
+			padding-inline: 24px;
+		}
+	}
+
+	&__inner {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		gap: px-to-rem(24);
-		padding: px-to-rem(20) px-to-rem(24) px-to-rem(20) px-to-rem(32);
-		transition: padding 0.25s ease;
+		padding-block: px-to-rem(20);
+		transition: padding-block 0.25s ease;
 	}
 
 	&__brand {
@@ -255,7 +264,7 @@ body.has-open-header-menu {
 	&--compact {
 		border-bottom-color: rgba(0, 0, 0, 0.1);
 
-		.site-header__container {
+		.site-header__inner {
 			padding-top: px-to-rem(16);
 			padding-bottom: px-to-rem(16);
 		}
@@ -313,8 +322,12 @@ body.has-open-header-menu {
 			color: $clr-base;
 		}
 
-		&__container {
-			padding: px-to-rem(32) px-to-rem(24);
+		> .container {
+			padding-inline: 24px;
+		}
+
+		&__inner {
+			padding-block: px-to-rem(32);
 		}
 
 		&__toggle {
@@ -406,7 +419,7 @@ body.has-open-header-menu {
 		}
 
 		&.site-header--compact {
-			.site-header__container {
+			.site-header__inner {
 				padding-top: px-to-rem(24);
 				padding-bottom: px-to-rem(24);
 			}
