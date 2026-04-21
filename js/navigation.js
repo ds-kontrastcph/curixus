@@ -1,99 +1,140 @@
 /**
  * File navigation.js.
  *
- * Handles toggling the navigation menu for small screens and enables TAB key
- * navigation support for dropdown menus.
+ * Handles the sticky site header and mobile navigation state.
  */
 ( function() {
-	const siteNavigation = document.getElementById( 'site-navigation' );
+	'use strict';
 
-	// Return early if the navigation doesn't exist.
-	if ( ! siteNavigation ) {
-		return;
-	}
+	const MOBILE_BREAKPOINT = 991;
+	const COMPACT_SCROLL_OFFSET = 24;
+	const HEADER_MENU_OPEN_CLASS = 'site-header--menu-open';
+	const BODY_MENU_OPEN_CLASS = 'has-open-header-menu';
 
-	const button = siteNavigation.getElementsByTagName( 'button' )[ 0 ];
+	function initHeaderNavigation() {
+		const siteHeader = document.querySelector( '[data-site-header]' );
 
-	// Return early if the button doesn't exist.
-	if ( 'undefined' === typeof button ) {
-		return;
-	}
-
-	const menu = siteNavigation.getElementsByTagName( 'ul' )[ 0 ];
-
-	// Hide menu toggle button if menu is empty and return early.
-	if ( 'undefined' === typeof menu ) {
-		button.style.display = 'none';
-		return;
-	}
-
-	if ( ! menu.classList.contains( 'nav-menu' ) ) {
-		menu.classList.add( 'nav-menu' );
-	}
-
-	// Toggle the .toggled class and the aria-expanded value each time the button is clicked.
-	button.addEventListener( 'click', function() {
-		siteNavigation.classList.toggle( 'toggled' );
-
-		if ( button.getAttribute( 'aria-expanded' ) === 'true' ) {
-			button.setAttribute( 'aria-expanded', 'false' );
-		} else {
-			button.setAttribute( 'aria-expanded', 'true' );
+		if ( ! siteHeader ) {
+			return;
 		}
-	} );
 
-	// Remove the .toggled class and set aria-expanded to false when the user clicks outside the navigation.
-	document.addEventListener( 'click', function( event ) {
-		const isClickInside = siteNavigation.contains( event.target );
+		const menuToggle = siteHeader.querySelector( '[data-header-toggle]' );
+		const menuPanel = siteHeader.querySelector( '[data-header-panel]' );
+		const menuLinks = siteHeader.querySelectorAll( '.site-header__menu a' );
+		let isScrollTicking = false;
 
-		if ( ! isClickInside ) {
-			siteNavigation.classList.remove( 'toggled' );
-			button.setAttribute( 'aria-expanded', 'false' );
+		function isMobileViewport() {
+			return window.innerWidth <= MOBILE_BREAKPOINT;
 		}
-	} );
 
-	// Get all the link elements within the menu.
-	const links = menu.getElementsByTagName( 'a' );
+		function isMenuOpen() {
+			return siteHeader.classList.contains( HEADER_MENU_OPEN_CLASS );
+		}
 
-	// Get all the link elements with children within the menu.
-	const linksWithChildren = menu.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
+		function syncBodyScrollState() {
+			document.body.classList.toggle( BODY_MENU_OPEN_CLASS, isMenuOpen() && isMobileViewport() );
+		}
 
-	// Toggle focus each time a menu link is focused or blurred.
-	for ( const link of links ) {
-		link.addEventListener( 'focus', toggleFocus, true );
-		link.addEventListener( 'blur', toggleFocus, true );
-	}
-
-	// Toggle focus each time a menu link with children receive a touch event.
-	for ( const link of linksWithChildren ) {
-		link.addEventListener( 'touchstart', toggleFocus, false );
-	}
-
-	/**
-	 * Sets or removes .focus class on an element.
-	 */
-	function toggleFocus() {
-		if ( event.type === 'focus' || event.type === 'blur' ) {
-			let self = this;
-			// Move up through the ancestors of the current link until we hit .nav-menu.
-			while ( ! self.classList.contains( 'nav-menu' ) ) {
-				// On li elements toggle the class .focus.
-				if ( 'li' === self.tagName.toLowerCase() ) {
-					self.classList.toggle( 'focus' );
-				}
-				self = self.parentNode;
+		function setMenuState( shouldOpen ) {
+			if ( ! menuToggle || ! menuPanel ) {
+				return;
 			}
+
+			siteHeader.classList.toggle( HEADER_MENU_OPEN_CLASS, shouldOpen );
+			menuToggle.setAttribute( 'aria-expanded', shouldOpen ? 'true' : 'false' );
+			syncBodyScrollState();
 		}
 
-		if ( event.type === 'touchstart' ) {
-			const menuItem = this.parentNode;
-			event.preventDefault();
-			for ( const link of menuItem.parentNode.children ) {
-				if ( menuItem !== link ) {
-					link.classList.remove( 'focus' );
+		function closeMenu() {
+			setMenuState( false );
+		}
+
+		function updateCompactState() {
+			siteHeader.classList.toggle( 'site-header--compact', window.scrollY > COMPACT_SCROLL_OFFSET );
+		}
+
+		function handleScroll() {
+			if ( isScrollTicking ) {
+				return;
+			}
+
+			isScrollTicking = true;
+
+			window.requestAnimationFrame(
+				function() {
+					updateCompactState();
+					isScrollTicking = false;
+				}
+			);
+		}
+
+		function handleResize() {
+			updateCompactState();
+
+			if ( ! isMobileViewport() ) {
+				closeMenu();
+				return;
+			}
+
+			syncBodyScrollState();
+		}
+
+		if ( menuToggle ) {
+			menuToggle.addEventListener(
+				'click',
+				function() {
+					setMenuState( ! isMenuOpen() );
+				}
+			);
+		}
+
+		document.addEventListener(
+			'click',
+			function( event ) {
+				if ( ! isMobileViewport() || ! isMenuOpen() ) {
+					return;
+				}
+
+				if ( siteHeader.contains( event.target ) ) {
+					return;
+				}
+
+				closeMenu();
+			}
+		);
+
+		document.addEventListener(
+			'keydown',
+			function( event ) {
+				if ( 'Escape' === event.key && isMenuOpen() ) {
+					closeMenu();
 				}
 			}
-			menuItem.classList.toggle( 'focus' );
-		}
+		);
+
+		menuLinks.forEach(
+			function( menuLink ) {
+				menuLink.addEventListener(
+					'click',
+					function() {
+						if ( isMobileViewport() ) {
+							closeMenu();
+						}
+					}
+				);
+			}
+		);
+
+		window.addEventListener( 'scroll', handleScroll, { passive: true } );
+		window.addEventListener( 'resize', handleResize );
+
+		updateCompactState();
+		syncBodyScrollState();
+	}
+
+	if ( 'loading' === document.readyState ) {
+		document.addEventListener( 'DOMContentLoaded', initHeaderNavigation );
+	} else {
+		initHeaderNavigation();
 	}
 }() );

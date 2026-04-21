@@ -9,3 +9,5 @@ css/*.css.map
 blocks/*/*.css.map
 node_modules/
 package-lock.json
+.idea/
+.codex
