@@ -4,7 +4,7 @@ html {
 	font-size: 16px;
 	// font-size: clamp(8px, 1.16vw, 16px);
 	// font-size: clamp(8.53px, 0.8333vw, 16px);
-	line-height: 1.5;
+	line-height: 1.7;
 	height: 100%;
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
@@ -18,10 +18,10 @@ html {
 
 body {
 	min-width: 320px;
-	font: 18px/1.5 $font-family-primary;
+	font: 16px/1.7 $font-family-primary;
 	font-size: px-to-rem(18);
-	background: $clr-base;
-	color: $clr-white;
+	background: $clr-white;
+	color: $clr-base;
 	margin: 0;
 	padding: 0;
 	height: 100%;
@@ -75,18 +75,18 @@ h6 {
 }
 .h1,
 h1 {
-	font-size: px-to-rem(85);
+	font-size: px-to-rem(52);
 	line-height: 1.2;
 	font-weight: 600;
 	@include desktop {
-		font-size: px-to-rem(60);
+		font-size: px-to-rem(48);
 	}
-	@include tablet{
-		font-size: px-to-rem(50);
-	}
-	@include mobile{
-		font-size: px-to-rem(48px);
-	}
+	// @include tablet{
+	// 	font-size: px-to-rem(42);
+	// }
+	// @include mobile{
+	// 	font-size: px-to-rem(48px);
+	// }
 }
 .h2,
 h2 {
@@ -102,7 +102,7 @@ h2 {
 }
 .h3,
 h3 {
-	font-size: px-to-rem(35);
+	font-size: px-to-rem(32);
 	line-height: 1.3;
 	font-weight: 600;
 	strong, b {
@@ -114,7 +114,7 @@ h3 {
 }
 .h4,
 h4 {
-	font-size: px-to-rem(22);
+	font-size: px-to-rem(24);
 	line-height: 1.4;
 	font-weight: 500;
 	@include mobile {
@@ -597,7 +597,6 @@ section {
 	flex-direction: column;
 	overflow: clip;
 	box-sizing: border-box;
-	background-color: $clr-navy;
 	z-index: 3;
 	
 }
