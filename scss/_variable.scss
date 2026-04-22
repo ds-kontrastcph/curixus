@@ -3,6 +3,11 @@
 		@content;
 	}
 }
+@mixin desktop-1560 {
+	@media only screen and (max-width: 1560px) {
+		@content;
+	}
+}
 @mixin desktop-1400 {
 	@media only screen and (max-width: 1400px) {
 		@content;

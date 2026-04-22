@@ -23,3 +23,11 @@ function curixus_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'curixus_scripts' );
+
+
+
+// Setup admin style
+function admin_style() {
+	wp_enqueue_style('admin-styles', get_template_directory_uri() . '/css/admin.css', array(), filemtime(get_template_directory() . '/css/admin.css'), false );
+}
+add_action('admin_enqueue_scripts', 'admin_style');

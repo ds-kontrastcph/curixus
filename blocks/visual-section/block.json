@@ -1,0 +1,44 @@
+{
+	"name": "curixus/visual-section",
+	"title": "Visual Section",
+	"description": "Section with visual part and content",
+	"category": "curixus",
+	"icon": "embed-photo",
+	"keywords": ["image", "visual", "photo"],
+	"acf": { 
+		"mode": "preview",
+		"blockVersion": 3,
+		"renderTemplate": "block-render.php",
+		"postTypes": [ "page" ]
+	},
+	"example": {
+		"attributes": {
+			"preview": true,
+			"data": {
+				"preview_image_help": "block-image-preview.png"
+			}
+		}
+	},
+	"supports": {
+		"align": ["none"],
+		"spacing": {
+			"margin": ["top", "bottom"],
+			"padding": ["top", "bottom"],
+			"units": [ "px" ]
+		},
+		"color" : {
+			"background": false,
+			"gradients": false
+		},
+		"anchor": false
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "none"
+		}
+
+	},
+	"style": ["file:./style.css"]
+	
+}

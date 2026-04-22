@@ -1,0 +1,124 @@
+@import '../../scss/variable';
+
+.visual-section {
+	position: relative;
+	.container {
+		max-width: 1385px;
+	}
+	&__wrap {
+		display:-ms-grid;
+		display:grid;
+		-ms-grid-columns:760fr 426fr;
+		grid-template-columns:760fr 426fr;
+		grid-gap: 136px;
+		align-items: center;
+		@include desktop {
+			grid-gap: 66px;
+		}
+		@include tablet {
+			-ms-grid-columns:1fr;
+			grid-template-columns:1fr;
+			grid-gap: 30px;
+		}
+		&--right {
+			@include mf-desktop {
+				-ms-grid-columns:426fr 760fr;
+				grid-template-columns:426fr 760fr;
+				.visual-section__visual {
+					-webkit-box-ordinal-group: 2;
+					-moz-box-ordinal-group: 2;
+					-ms-flex-order: 2;
+					-webkit-order: 2;
+					order: 2;
+				}
+			}
+		}
+		&--wide {
+			-ms-grid-columns:487fr 700fr;
+			grid-template-columns:487fr 700fr;
+			@include tablet {
+				-ms-grid-columns:1fr;
+				grid-template-columns:1fr;
+			}
+			&.visual-section__wrap--right {
+				-ms-grid-columns:700fr 487fr;
+				grid-template-columns:700fr 487fr;
+				@include tablet {
+					-ms-grid-columns:1fr;
+					grid-template-columns:1fr;
+				}
+			}
+		}
+	}
+	&__visual {
+		@include tablet {
+			-webkit-box-ordinal-group: 2;
+			-moz-box-ordinal-group: 2;
+			-ms-flex-order: 2;
+			-webkit-order: 2;
+			order: 2;
+		}
+	}
+	h1,
+	h2, h3, h4, p {
+		margin: 0;
+	}
+	.acf-innerblocks-container {
+		// display:-ms-grid;
+		// display:grid;
+		// -ms-grid-columns:1fr;
+		// grid-template-columns:1fr;
+		// @include mobile {
+		// 	display: block;
+		// }
+		font-size: 16px;
+		line-height: 2;
+		p {
+			color: #778493;
+		}
+	}
+	&__content {
+		display:-ms-grid;
+		display:grid;
+		-ms-grid-columns:1fr;
+		grid-template-columns:1fr;
+		grid-gap: 44px;
+		font-size: 20px;
+		line-height: 1.6;
+		@include mobile {
+			font-size: 18px;
+		}
+		p {
+			margin-block: 15px;
+			&:first-child {
+				margin-top: 0;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		h3.wp-block-heading {
+			@include mobile {
+				font-size: 24px;
+			}
+		}
+		.wp-block-heading {
+			margin-block: 24px;
+			&:first-child {
+				margin-top: 0;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+		.btn-group-block {
+			margin-block: 48px;
+			&:first-child {
+				margin-top: 0;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}

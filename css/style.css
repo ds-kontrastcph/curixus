@@ -12,12 +12,13 @@ html {
 body {
   min-width: 320px;
   font: 16px/1.7 "Manrope", sans-serif;
-  font-size: 1.125rem;
+  font-size: 1rem;
   background: #FAFAFA;
   color: #10233A;
   margin: 0;
   padding: 0;
   height: 100%;
+  text-wrap: pretty;
 }
 @media only screen and (max-width: 991px) {
   body {
@@ -606,7 +607,7 @@ section {
 }
 
 .container {
-  max-width: 1248px;
+  max-width: 1368px;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -897,7 +898,7 @@ section {
 }
 
 .btn {
-  border-radius: 30px;
+  border-radius: 0px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -906,16 +907,19 @@ section {
   position: relative;
   white-space: nowrap;
   overflow: hidden;
-  font-size: 0.9375rem;
+  font-size: 0.75rem;
   line-height: 1.5;
-  font-weight: 600;
-  padding: 0.625rem 1.25rem;
+  font-weight: 700;
+  padding: 1.5rem 1.5rem;
   font-family: "Manrope", sans-serif;
   border: 0;
   background: none;
   transition: all 0.2s ease 0s;
   text-decoration: none;
   cursor: pointer;
+  min-width: var(--min-width, 0);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
 }
 .btn:hover {
   text-decoration: none;
@@ -927,16 +931,18 @@ section {
   position: relative;
   line-height: 1;
   transition: transform 0.4s ease 0s;
-  flex: 0 0 22px;
+  flex: 0 0 1em;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .btn__icon--after {
   order: 2;
+  margin-left: auto;
 }
 .btn__icon--before {
   order: -1;
+  margin-right: auto;
 }
 .btn__icon svg {
   fill: currentColor;
@@ -952,107 +958,48 @@ section {
   vertical-align: top;
 }
 .btn--primary {
-  background-color: var(--wp--preset--color--yellow, #FFDD0C);
+  background-color: #FC9700;
   color: #10233A;
 }
+.btn--primary .btn__icon,
 .btn--primary .btn__text {
   color: #10233A;
 }
 .btn--primary:hover {
-  background-color: var(--wp--preset--color--darker-yellow, #A08A03);
+  background-color: #FDAC33;
 }
 .btn--secondary {
-  background-color: var(--wp--preset--color--cloud-white, #FAFAFA);
+  background-color: #F5F5F5;
   color: #10233A;
 }
+.btn--secondary .btn__icon,
 .btn--secondary .btn__text {
   color: #10233A;
 }
 .btn--secondary:hover {
-  background-color: var(--wp--preset--color--light-blue, #A08A03);
+  background-color: #DEE0E2;
 }
-.btn--blue {
-  background-color: var(--wp--preset--color--light-blue, #A08A03);
+.btn--white-transparent {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.btn--white-transparent .btn__icon,
+.btn--white-transparent .btn__text {
+  color: #fff;
+}
+.btn--white-transparent:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.btn--dark-transparent {
+  background-color: rgba(16, 35, 58, 0.05);
   color: #10233A;
 }
-.btn--blue .btn__text {
+.btn--dark-transparent .btn__icon,
+.btn--dark-transparent .btn__text {
   color: #10233A;
 }
-.btn--blue:hover {
-  background-color: var(--wp--preset--color--cloud-white, #FAFAFA);
-}
-.btn--dark {
-  background-color: var(--wp--preset--color--navy-blue, #0A1428);
-  color: #10233A;
-}
-.btn--dark .btn__text {
-  color: #10233A;
-}
-.btn--dark:hover {
-  background-color: var(--wp--preset--color--cloud-white, #FAFAFA);
-}
-.btn--coral {
-  background-color: var(--wp--preset--color--warm-coral, #F88673);
-  color: #10233A;
-}
-.btn--coral .btn__text {
-  color: #10233A;
-}
-.btn--coral:hover {
-  background-color: var(--wp--preset--color--darker-coral, #D5422A);
-}
-.btn--violet {
-  background-color: var(--wp--preset--color--vivid-violet, #926FDE);
-  color: #10233A;
-}
-.btn--violet .btn__text {
-  color: #10233A;
-}
-.btn--violet:hover {
-  background-color: var(--wp--preset--color--darker-violet, #6A3CCF);
-}
-.btn--green {
-  background-color: var(--wp--preset--color--mint-green, #54F0A3);
-  color: #10233A;
-}
-.btn--green .btn__text {
-  color: #10233A;
-}
-.btn--green:hover {
-  background-color: var(--wp--preset--color--darker-mint, #11AF61);
-}
-.btn--outline-white {
-  color: #FAFAFA;
-  box-shadow: inset 0 0 0 1px #FAFAFA;
-}
-.btn--outline-white .btn__text {
-  color: #FAFAFA;
-}
-.btn--outline-white:hover {
-  color: #10233A;
-  background-color: #FAFAFA;
-}
-.btn--outline-white:hover .btn__text {
-  color: #10233A;
-}
-.btn--inline-gradient {
-  color: #FFA600;
-  padding: 0;
-}
-.btn--inline-gradient .btn__text {
-  text-decoration: underline;
-  color: #FFA600;
-  background: linear-gradient(82deg, #FFDD0C 6.18%, #FFA600 48.98%, #FF790C 89.99%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.btn--inline-gradient:hover .btn__text {
-  text-decoration: none;
-  background: linear-gradient(270deg, #FFDD0C 6.18%, #FFA600 48.98%, #FF790C 89.99%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.btn--dark-transparent:hover {
+  background-color: rgba(16, 35, 58, 0.1);
 }
 .btn--transparent {
   padding-inline: 0;
@@ -1070,9 +1017,10 @@ section {
   flex: 0 0 16px;
 }
 .btn--lg {
-  font-size: 1.125rem;
-  border-radius: 40px;
+  font-size: 0.8125rem;
   line-height: 1.5;
+  padding: 2.5rem;
+  letter-spacing: 0.1em;
 }
 .btn--lg .btn__icon {
   flex: 0 0 20px;
@@ -1482,9 +1430,6 @@ section {
   z-index: 3;
   background-color: #10233A;
   color: #FFFFFF;
-}
-.site-footer .container {
-  max-width: 1368px;
 }
 .site-footer a {
   color: inherit;

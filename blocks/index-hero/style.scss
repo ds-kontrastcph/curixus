@@ -1,0 +1,189 @@
+@import '../../scss/variable';
+
+$clr-orange: #FC9700;
+$clr-smoke:  #F5F5F5;
+$clr-muted:  #778493;
+
+// Diagonal clip-path matching Figma Union shape (left edge slanted inward)
+
+.index-hero {
+	position: relative;
+	z-index: 2;
+	// ── Image ──────────────────────────────────────────────────────────
+	&__image-wrap {
+		position: absolute;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 740px;
+		pointer-events: none;
+
+		@include desktop-1560 {
+			width: 640px;
+		}
+		@include desktop-1400 {
+			right: auto;
+			left: 760px;
+		}
+	}
+
+
+	// Photo clipped to the same parallelogram shape
+	&__image-photo {
+		position: absolute;
+		inset: 0 0 23px 0;
+		overflow: hidden;
+	}
+
+	&__img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	// ── Content ────────────────────────────────────────────────────────
+	&__inner {
+		
+		padding-block: 160px;
+		@include desktop-1560 {
+			padding-block: 120px;
+		}
+		@include desktop-sm {
+			padding-top: 120px;
+			padding-bottom: 80px;
+		}
+
+		@include tablet {
+			padding-top: 80px;
+			padding-bottom: 60px;
+		}
+
+		@include mobile {
+			padding-top: 60px;
+			padding-bottom: 40px;
+		}
+	}
+
+	&__content {
+		max-width: 760px;
+
+		@include tablet {
+			max-width: 100%;
+		}
+	}
+
+	&__eyebrow {
+		font-family: $font-family-primary;
+		font-weight: 500;
+		font-size: px-to-rem(20);
+		line-height: 1.5;
+		color: $clr-muted;
+		letter-spacing: -0.2px;
+		margin: 0 0 16px;
+
+		@include mobile {
+			font-size: 16px;
+		}
+	}
+
+	&__heading {
+		font-family: $font-family-primary;
+		font-weight: 400;
+		font-size: px-to-rem(48);
+		line-height: 1.2;
+		color: $clr-base;
+		letter-spacing: -0.48px;
+		margin: 0;
+	}
+
+	// ── CTA Buttons ────────────────────────────────────────────────────
+	&__cta {
+		
+	}
+
+	&__cta-inner {
+		margin-bottom: -23px;
+		display: flex;
+		gap: 24px;
+
+		@include mobile {
+			flex-direction: column;
+			gap: 0;
+		}
+	}
+
+	&__btn {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 40px;
+		width: 424px;
+		min-height: 103px;
+		text-decoration: none;
+		overflow: hidden;
+		flex-shrink: 0;
+		text-decoration: none !important;
+
+		@include desktop-sm {
+			width: calc(50% - 12px);
+			padding: 32px;
+		}
+
+		@include mobile {
+			width: 100%;
+			min-height: 80px;
+			padding: 24px;
+		}
+
+		&-label {
+			font-family: $font-family-primary;
+			font-weight: 700;
+			font-size: 13px;
+			line-height: 1.5;
+			letter-spacing: 1.3px;
+			text-transform: uppercase;
+			color: $clr-base;
+			position: relative;
+			z-index: 1;
+		}
+
+		&-arrow {
+			position: relative;
+			z-index: 1;
+			display: flex;
+			align-items: center;
+			flex-shrink: 0;
+		}
+
+		// Hover overlay (Figma pattern)
+		&-hover {
+			position: absolute;
+			inset: 0;
+			width: 0;
+			transition: width 0.35s ease;
+		}
+
+		&:hover &-hover {
+			width: 100%;
+		}
+
+		&--primary {
+			background: $clr-orange;
+
+			.index-hero__btn-hover {
+				background: rgba(255, 255, 255, 0.15);
+			}
+		}
+
+		&--secondary {
+			background: $clr-smoke;
+
+			.index-hero__btn-hover {
+				background: rgba(16, 35, 58, 0.08);
+			}
+		}
+	}
+}

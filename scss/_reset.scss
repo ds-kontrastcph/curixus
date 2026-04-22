@@ -19,12 +19,13 @@ html {
 body {
 	min-width: 320px;
 	font: 16px/1.7 $font-family-primary;
-	font-size: px-to-rem(18);
+	font-size: px-to-rem(16);
 	background: $clr-white;
 	color: $clr-base;
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	text-wrap: pretty;
 	@include tablet {
 		--wp--preset--font-size--small: .875rem;
 		--wp--preset--font-size--medium: 1.2rem;
@@ -605,7 +606,7 @@ section {
 	fill: currentColor;
 }
 .container{
-	max-width: 1248px;
+	max-width: 1368px;
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
