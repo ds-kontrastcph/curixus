@@ -138,3 +138,8 @@ require get_template_directory() . '/inc/acf.php';
  * Helpers Functions
  */
 require get_template_directory() . '/inc/helpers.php';
+
+/**
+ * Register custom post types.
+ */
+require get_template_directory() . '/inc/init-cpt.php';

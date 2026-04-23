@@ -1,0 +1,186 @@
+@import '../../scss/variable';
+
+$application-process-bg: rgba(255,255,255,.0);
+$application-process-footer-bg: #10233A;
+$application-process-text: #10233A;
+$application-process-muted: #778493;
+$application-process-padding: 112px;
+$application-process-gap: 136px;
+$application-process-step-gap: 48px;
+$application-process-badge-icon-size: 72px;
+$application-process-button-width: 312px;
+
+.application-process-section {
+	background: linear-gradient(
+		180deg,
+		$application-process-bg 0%,
+		$application-process-bg 40%,
+		$application-process-footer-bg 40%,
+		$application-process-footer-bg 100%
+	);
+}
+
+.application-process {
+	display: grid;
+	grid-template-columns: minmax(0, 424px) minmax(0, 424px);
+	justify-content: space-between;
+	align-items: center;
+	gap: $application-process-gap;
+	padding: $application-process-padding;
+	background-color: #F5F5F5;
+
+	@include desktop {
+		gap: 64px;
+		padding: 80px;
+	}
+
+	@include tablet {
+		grid-template-columns: 1fr;
+		padding: 48px 32px;
+		gap: 56px;
+	}
+
+	@include mobile {
+		padding: 32px 24px;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 48px;
+	}
+
+	&__title {
+		margin: 0;
+		color: $application-process-text;
+		font-size: 32px;
+		line-height: 1.5;
+		font-weight: 400;
+
+		@include mobile {
+			font-size: 28px;
+		}
+	}
+
+	&__btn {
+		width: 100%;
+		max-width: $application-process-button-width;
+		justify-content: space-between;
+	}
+
+	&__steps {
+		display: flex;
+		flex-direction: column;
+		gap: $application-process-step-gap;
+	}
+
+	&__step {
+		display: grid;
+		grid-template-columns: 72px 1fr;
+		align-items: flex-start;
+		gap: 40px;
+		position: relative;
+		&:after {
+			content: '';
+			position: absolute;
+			top: 0;
+			bottom: -48px;
+			left: 36px;
+			width: 1px;
+			background-color: rgba(16, 35, 58, 0.2);
+			transform: translateX(-50%);
+		}
+		@include mobile {
+			gap: 24px;
+		}
+
+		&--number {
+			.application-process__badge {
+				position: relative;
+				width: 48px;
+				height: 48px;
+				border: 1px solid rgba(16, 35, 58, 0.2);
+				background-color: #F5F5F5;
+				z-index: 2;
+				margin-left: 12px;
+				margin-right: 12px;
+			}
+
+		}
+
+		&:last-of-type {
+			&::after {
+				display: none;
+			}
+		}
+
+		&--icon {
+
+			.application-process__badge {
+				width: $application-process-badge-icon-size;
+				height: $application-process-badge-icon-size;
+				background-color: $application-process-footer-bg;
+				color: $white;
+			}
+		}
+	}
+
+	&__badge {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+	}
+
+	&__badge-label {
+		color: $application-process-text;
+		font-size: 20px;
+		line-height: 1;
+		font-weight: 500;
+	}
+
+	&__badge-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+
+		.svg-icon {
+			width: 32px;
+			height: 32px;
+			fill: none;
+			stroke: currentColor;
+		}
+	}
+
+	&__badge-image {
+		display: block;
+		width: 32px;
+		height: 32px;
+		object-fit: contain;
+	}
+
+	&__step-content {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		max-width: 236px;
+	}
+
+	&__step-title {
+		margin: 0;
+		color: $application-process-text;
+		font-size: 20px;
+		line-height: 1;
+		font-weight: 500;
+		letter-spacing: -0.01em;
+	}
+
+	&__step-description {
+		color: $application-process-muted;
+		font-size: 14px;
+		line-height: 1.5;
+	}
+}

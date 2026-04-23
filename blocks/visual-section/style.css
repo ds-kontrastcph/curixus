@@ -107,6 +107,8 @@
 }
 .visual-section__content .wp-block-heading {
   margin-block: 24px;
+  line-height: 1.5;
+  font-weight: normal;
 }
 .visual-section__content .wp-block-heading:first-child {
   margin-top: 0;
