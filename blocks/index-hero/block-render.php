@@ -61,16 +61,12 @@ $image   = get_field( 'hero_image' );
 				<?php if ( $link && ! empty( $link['url'] ) ) : ?>
 					<a
 						href="<?php echo esc_url( $link['url'] ); ?>"
-						class="index-hero__btn index-hero__btn--<?php echo esc_attr( $style ); ?>"
+						class="index-hero__btn btn btn--lg btn--<?php echo esc_attr( $style ); ?>"
 						target="<?php echo esc_attr( $link['target'] ?: '_self' ); ?>"
 					>
-						<span class="index-hero__btn-label"><?php echo esc_html( $link['title'] ); ?></span>
-						<span class="index-hero__btn-arrow" aria-hidden="true">
-							<svg width="12" height="21" viewBox="0 0 12 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M1 1L10.5 10.5L1 20" stroke="#10233A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-							</svg>
-						</span>
-						<span class="index-hero__btn-hover"></span>
+						<span class="btn__text"><?php echo esc_html( $link['title'] ); ?></span>
+						<span class="btn__icon btn__icon--after" aria-hidden="true"><?php sprite_svg( 'icon-right', '14', '25' ); ?></span>
+						
 					</a>
 				<?php endif; ?>
 			<?php endwhile; ?>

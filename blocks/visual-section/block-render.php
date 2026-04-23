@@ -53,9 +53,8 @@ $allowed = array(
 <?php /* style for Preview Only */ ?>
 <?php if ($is_preview): ?>
 <style type="text/css">
-	<?php echo '#' . $id; ?> .container {
-		position: relative;
-		z-index: 3;
+	<?php echo '#' . $id; ?> {
+		padding-block: 0 !important;
 	}
 	<?php echo '#' . $id; ?> a {
 		pointer-events: none;

@@ -57,6 +57,10 @@ $section_description = get_field( 'section_description' );
 	}
 	<?php echo '#' . esc_attr( $id ); ?> .portfolio-card__overlay {
 		pointer-events: none;
+		box-sizing: border-box;
+	}
+	<?php echo '#' . esc_attr( $id ); ?> .portfolio-card__image {
+		height: 100%;
 	}
 </style>
 <?php endif; ?>
