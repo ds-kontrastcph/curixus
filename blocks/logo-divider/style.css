@@ -1,0 +1,16 @@
+.logo-divider-section {
+  overflow: hidden;
+  padding-top: 120px;
+}
+
+.logo-divider {
+  position: relative;
+  text-align: center;
+}
+.logo-divider svg {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+/*# sourceMappingURL=style.css.map */

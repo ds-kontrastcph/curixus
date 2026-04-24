@@ -1,0 +1,92 @@
+{
+    "key": "group_impact_metrics_block",
+    "title": "Block: Impact Metrics",
+    "fields": [
+        {
+            "key": "field_impact_metrics_items",
+            "label": "Metrics",
+            "name": "metrics",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 3,
+            "collapsed": "field_impact_metrics_value",
+            "button_label": "Add Metric",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_impact_metrics_value",
+                    "label": "Value",
+                    "name": "metric_value",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "15+",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_impact_metrics_items"
+                },
+                {
+                    "key": "field_impact_metrics_description",
+                    "label": "Description",
+                    "name": "metric_description",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_impact_metrics_items"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "curixus\/impact-metrics"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1777015001
+}

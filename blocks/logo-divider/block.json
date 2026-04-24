@@ -1,0 +1,39 @@
+{
+	"name": "curixus/logo-divider",
+	"title": "Logo Divider",
+	"description": "Decorative divider with oversized Curixus wordmark.",
+	"category": "curixus",
+	"icon": "minus",
+	"keywords": ["logo", "divider", "brand", "decorative"],
+	"acf": {
+		"mode": "preview",
+		"blockVersion": 3,
+		"renderTemplate": "block-render.php"
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		}
+	},
+	"supports": {
+		"align": ["full"],
+		"anchor": true,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": false,
+			"gradients": false,
+			"link": false
+		},
+		"dimensions": {
+			"minHeight": false
+		},
+		"position": {
+			"sticky": false
+		}
+	},
+	"style": ["file:./style.css"]
+}
