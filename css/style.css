@@ -1276,7 +1276,7 @@ section {
   background-color: rgba(16, 35, 58, 0.05);
 }
 .site-header--dark {
-  background-color: transparent;
+  background-color: #10233A;
   border-bottom-color: transparent;
   color: #FFFFFF;
 }
@@ -1587,6 +1587,115 @@ section {
   }
   .site-footer__meta-item:not(:first-child)::before {
     display: none;
+  }
+}
+
+.text-page {
+  background-color: #FFFFFF;
+}
+.text-page__hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 4rem;
+  padding-bottom: 12.5rem;
+  background-color: #10233A;
+  color: #FFFFFF;
+  text-align: center;
+}
+.text-page__hero-container {
+  max-width: calc(68.5rem + 3rem);
+}
+.text-page__title {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.text-page__featured-image-wrap {
+  margin-top: -5rem;
+}
+.text-page__featured-image-container {
+  max-width: calc(68.5rem + 3rem);
+}
+.text-page__featured-image {
+  height: 26.5rem;
+  margin: 0;
+  overflow: hidden;
+}
+.text-page__featured-image-el {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.text-page__body {
+  padding-block: 7rem;
+}
+.text-page__body-container {
+  max-width: calc(54.5rem + 3rem);
+}
+.text-page__content {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #778493;
+}
+.text-page__content > *:first-child {
+  margin-top: 0;
+}
+.text-page__content > *:last-child {
+  margin-bottom: 0;
+}
+.text-page__content p {
+  margin-block: 27px;
+}
+.text-page__content h2 {
+  font-size: 24px;
+  margin-block: 1em;
+}
+.text-page__content .wp-block-heading {
+  color: #10233A;
+}
+.text-page__content .wp-block-list {
+  color: #10233A;
+  margin-block: 64px;
+  display: grid;
+  grid-gap: 40px;
+}
+@media only screen and (max-width: 991px) {
+  .text-page__hero {
+    margin-top: -5.25rem;
+    padding-top: 9rem;
+    padding-bottom: 10rem;
+  }
+  .text-page__title {
+    font-size: 2.5rem;
+  }
+  .text-page__featured-image {
+    height: 22.5rem;
+  }
+  .text-page__body {
+    padding-block: 5rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .text-page__hero {
+    margin-top: -5.25rem;
+    padding-top: 5.5rem;
+    padding-bottom: 6.5rem;
+  }
+  .text-page__title {
+    font-size: 2rem;
+  }
+  .text-page__featured-image-wrap {
+    margin-top: -3rem;
+  }
+  .text-page__featured-image {
+    height: 16.25rem;
+  }
+  .text-page__body {
+    padding-block: 4rem;
   }
 }
 
