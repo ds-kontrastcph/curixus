@@ -1,0 +1,39 @@
+{
+	"name": "curixus/application-form",
+	"title": "Application Form",
+	"description": "Application form section with ACF heading and Contact Form 7 embed.",
+	"category": "curixus",
+	"icon": "feedback",
+	"keywords": ["application", "form", "contact form 7", "cf7"],
+	"acf": {
+		"mode": "preview",
+		"blockVersion": 3,
+		"renderTemplate": "block-render.php"
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		}
+	},
+	"supports": {
+		"align": ["full"],
+		"anchor": true,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": false,
+			"gradients": false,
+			"link": false
+		},
+		"dimensions": {
+			"minHeight": false
+		},
+		"position": {
+			"sticky": false
+		}
+	},
+	"style": ["file:./style.css"]
+}

@@ -1,0 +1,310 @@
+.application-form-section {
+  position: relative;
+  padding-block: 103px 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='1680' height='1150' viewBox='0 0 1680 1150' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.08'%3E%3Cpath d='M1786.07 1148.58H1380.07L1048.22 656.797L1257.3 354.358L1786.07 1148.58Z' stroke='black'/%3E%3Cpath d='M1786.07 -634.5L1258.6 161.797L1049.26 -141.421L1376.44 -634.5H1786.07Z' stroke='black'/%3E%3Cpath d='M299.93 -634.5L915.692 257.04L299.93 1148.58H-106.071L482.535 257.315L482.717 257.04L482.535 256.765L-106.071 -634.5H299.93Z' stroke='black'/%3E%3C/g%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+.application-form-section::before {
+  content: "";
+  position: absolute;
+  inset: 190px 0 88px;
+  background-color: #0A1428;
+}
+@media only screen and (max-width: 991px) {
+  .application-form-section {
+    padding-block: 64px;
+  }
+  .application-form-section::before {
+    inset-block: 64px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .application-form-section {
+    padding-block: 40px;
+  }
+  .application-form-section::before {
+    inset-block: 40px;
+  }
+}
+
+.application-form {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 88px;
+  padding: 112px;
+  background-color: #F5F5F5;
+}
+@media only screen and (max-width: 1350px) {
+  .application-form {
+    padding: 80px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .application-form {
+    gap: 64px;
+    padding: 48px 32px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .application-form {
+    padding: 32px 24px;
+  }
+}
+.application-form__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 424px;
+}
+.application-form__title, .application-form__description p {
+  margin: 0;
+}
+.application-form__title {
+  color: #10233A;
+  font-size: 2rem;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+@media only screen and (max-width: 767px) {
+  .application-form__title {
+    font-size: 1.75rem;
+  }
+}
+.application-form__description {
+  color: #778493;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.application-form__form {
+  width: 100%;
+}
+.application-form__placeholder {
+  margin: 0;
+  color: #778493;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.application-form .wpcf7,
+.application-form .wpcf7-form,
+.application-form .application-form__fields {
+  width: 100%;
+}
+.application-form .application-form__fields {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+@media only screen and (max-width: 767px) {
+  .application-form .application-form__fields {
+    gap: 32px;
+  }
+}
+.application-form .grid-row {
+  row-gap: 40px;
+}
+@media only screen and (max-width: 767px) {
+  .application-form .grid-row {
+    row-gap: 24px;
+  }
+}
+.application-form__field, .application-form__file {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.application-form__label, .application-form__label-text {
+  display: block;
+  margin: 0;
+  color: #778493;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 600;
+}
+.application-form__label .wpcf7-form-control-wrap {
+  display: block;
+  margin-top: 8px;
+}
+.application-form__file-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.application-form__file-note, .application-form__helper {
+  margin: 0;
+  color: #778493;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.application-form__helper {
+  max-width: 100%;
+}
+.application-form__control {
+  display: block;
+  width: 100%;
+  height: 62px;
+  padding: 20px;
+  border: 1px solid rgba(16, 35, 58, 0.2);
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  color: #10233A;
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 600;
+  appearance: none;
+}
+.application-form__control::placeholder {
+  color: #778493;
+  font-weight: 500;
+}
+.application-form__control:focus {
+  border-color: #10233A;
+  outline: none;
+}
+.application-form__control--textarea {
+  height: 174px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  resize: vertical;
+}
+.application-form__control--select {
+  padding-right: 52px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7' fill='none'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2310233A' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-position: right 20px center;
+  background-repeat: no-repeat;
+  background-size: 12px 7px;
+}
+.application-form__file-input {
+  display: block;
+  width: 100%;
+  height: 62px;
+  padding: 20px 70px 20px 20px;
+  border: 1px solid rgba(16, 35, 58, 0.2);
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+  color: #10233A;
+  font-family: "Manrope", sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.application-form__file-input:focus {
+  border-color: #10233A;
+  outline: none;
+}
+.application-form__file-input::file-selector-button {
+  margin: -1px -1px -1px 0;
+  border: 0;
+  border-left: 1px solid rgba(16, 35, 58, 0.2);
+  background-color: #0A1428;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 16V6M12 6L8.5 9.5M12 6L15.5 9.5M6 18.5H18' stroke='white' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  color: transparent;
+  font-size: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.application-form__file-input::-webkit-file-upload-button {
+  margin: -1px -1px -1px 0;
+  border: 0;
+  border-left: 1px solid rgba(16, 35, 58, 0.2);
+  background-color: #0A1428;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 16V6M12 6L8.5 9.5M12 6L15.5 9.5M6 18.5H18' stroke='white' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  color: transparent;
+  font-size: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.application-form__file .wpcf7-form-control-wrap {
+  position: relative;
+}
+.application-form__file .wpcf7-form-control-wrap::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  inset-block-end: 0;
+  aspect-ratio: 1/1;
+  background-color: #0A1428;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M12 16V6M12 6L8.5 9.5M12 6L15.5 9.5M6 18.5H18' stroke='white' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 24px;
+  pointer-events: none;
+}
+.application-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding-top: 16px;
+}
+@media only screen and (max-width: 991px) {
+  .application-form__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.application-form__review {
+  max-width: 317px;
+  margin: 0;
+  color: #10233A;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.application-form__submit.btn {
+  --min-width: 424px;
+  width: 100%;
+  max-width: 424px;
+  justify-content: space-between;
+}
+@media only screen and (max-width: 991px) {
+  .application-form__submit.btn {
+    max-width: none;
+  }
+}
+.application-form .wpcf7-spinner {
+  margin: 16px 0 0;
+}
+.application-form .wpcf7-not-valid-tip {
+  margin-top: 8px;
+  color: #D63638;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+.application-form .wpcf7-response-output {
+  margin: 24px 0 0 !important;
+  padding: 12px 16px !important;
+  border-width: 1px !important;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.application-form .wpcf7 form.sent .wpcf7-response-output {
+  border-color: rgba(84, 240, 163, 0.5) !important;
+  background-color: rgba(84, 240, 163, 0.12);
+  color: #10233A;
+}
+.application-form .wpcf7 form.invalid .wpcf7-response-output,
+.application-form .wpcf7 form.unaccepted .wpcf7-response-output,
+.application-form .wpcf7 form.payment-required .wpcf7-response-output {
+  border-color: rgba(214, 54, 56, 0.35) !important;
+  background-color: rgba(214, 54, 56, 0.08);
+  color: #10233A;
+}
+
+/*# sourceMappingURL=style.css.map */

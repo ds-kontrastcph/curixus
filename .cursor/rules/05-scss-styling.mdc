@@ -138,6 +138,8 @@ $font-family-secondary: 'Bricolage Grotesque', sans-serif;
 - Use BEM with block-specific prefix: `.card-tiles__item`, `.btn-group__item`
 - Keep isolated (don't leak to global scope)
 - Avoid `!important` unless absolutely necessary
+- For new blocks, do NOT create a local set of block-only SCSS variables at the top of the file
+- Prefer direct values in the block stylesheet, or reuse shared tokens/mixins from `scss/_variable.scss` when the value is truly global/repeated
 
 ## Component Styles
 
