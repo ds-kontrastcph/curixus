@@ -1,6 +1,9 @@
 .process-timeline-section {
   background-color: transparent;
 }
+.process-timeline-section .container {
+  max-width: 1144px;
+}
 
 .process-timeline {
   display: flex;

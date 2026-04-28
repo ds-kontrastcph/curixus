@@ -5,7 +5,7 @@
 	display:grid;
 	-ms-grid-columns:repeat(12, 1fr);
 	grid-template-columns:repeat(12, 1fr);
-	grid-gap: 0 12px;
+	grid-gap: 0 24px;
 	&--center {
 		align-items: center;
 	}

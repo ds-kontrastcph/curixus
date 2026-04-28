@@ -5,6 +5,9 @@
   background-repeat: no-repeat;
   background-position: center top;
 }
+.application-form-section .container {
+  max-width: 1144px;
+}
 .application-form-section::before {
   content: "";
   position: absolute;
@@ -56,7 +59,7 @@
 .application-form__intro {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 21px;
   max-width: 424px;
 }
 .application-form__title, .application-form__description p {
@@ -96,7 +99,7 @@
 .application-form .application-form__fields {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 55px;
 }
 @media only screen and (max-width: 767px) {
   .application-form .application-form__fields {
@@ -131,8 +134,8 @@
 .application-form__file-heading {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 4px;
+  margin-bottom: 4px;
 }
 .application-form__file-note, .application-form__helper {
   margin: 0;
@@ -173,6 +176,8 @@
   padding-top: 20px;
   padding-bottom: 20px;
   resize: vertical;
+  font-size: 14px;
+  line-height: 1.2;
 }
 .application-form__control--select {
   padding-right: 52px;
@@ -250,7 +255,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 32px;
-  padding-top: 16px;
+  padding-top: 36px;
 }
 @media only screen and (max-width: 991px) {
   .application-form__footer {
