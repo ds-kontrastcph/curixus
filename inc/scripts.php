@@ -65,3 +65,9 @@ function admin_style() {
 	wp_enqueue_style('admin-styles', get_template_directory_uri() . '/css/admin.css', array(), filemtime(get_template_directory() . '/css/admin.css'), false );
 }
 add_action('admin_enqueue_scripts', 'admin_style');
+
+// Custom WordPress Login Logo
+function login_css() {
+	wp_enqueue_style( 'login_css', 'https://www.kontrastcph.dk/login/login.css' );
+}
+add_action('login_head', 'login_css');
