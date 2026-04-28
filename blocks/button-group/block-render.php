@@ -57,23 +57,24 @@ $wrapper_attributes = get_block_wrapper_attributes([
 					'btn--' . get_sub_field( 'button_style' ),
 					'btn--' . get_sub_field( 'button_size' ),
 				);
-				$ga_tracking_class = get_sub_field( 'ga_tracking_class' );
-				if ( ! empty( $ga_tracking_class ) ) {
-					foreach ( preg_split( '/\s+/', trim( $ga_tracking_class ) ) as $ga_class_part ) {
-						$sanitized_ga_class = sanitize_html_class( $ga_class_part );
-						if ( '' !== $sanitized_ga_class ) {
-							$button_classes[] = $sanitized_ga_class;
-						}
-					}
-				}
+				
 				$button_class_attr = implode( ' ', $button_classes );
 				?>
 				<div class="btn-group__item">
+					<?php 
+					if ( get_sub_field( 'has_min-width' ) == 1 ) {
+						$min_width_px_value = get_sub_field( 'min_width' );
+						$min_width_rem_value = $min_width_px_value / 16;
+						$additional_style = ' style="--min-width: '. $min_width_rem_value .'rem;"';
+					} else {
+						$additional_style = '';
+					}
+					?>
 					<?php $button = get_sub_field( 'button' ); ?>
 					<?php $button_icon = get_sub_field( 'button_icon' ); ?>
 					<?php $select_modal = get_sub_field( 'select_modal' ); ?>
 					<?php if ( get_sub_field( 'has_modal' ) == 1 ) : ?>
-						<button data-fancybox data-src="#modal-<?php echo esc_attr($select_modal); ?>" class="<?php echo esc_attr( $button_class_attr ); ?>" >
+						<button data-fancybox data-src="#modal-<?php echo esc_attr($select_modal); ?>"  <?php echo $additional_style; ?> class="<?php echo esc_attr( $button_class_attr ); ?>" >
 							<span class="btn__text"><?php the_sub_field( 'button_text' ); ?></span>
 							<?php $button_icon = get_sub_field( 'button_icon' ); ?>
 							<?php if ( $button_icon ) : ?>
@@ -102,7 +103,7 @@ $wrapper_attributes = get_block_wrapper_attributes([
 						?>
 					<?php else : ?>
 						<?php if ( $button ) : ?>
-							<a class="<?php echo esc_attr( $button_class_attr ); ?>" href="<?php echo esc_url( $button['url'] ); ?>" target="<?php echo esc_attr( $button['target'] ); ?>">
+							<a class="<?php echo esc_attr( $button_class_attr ); ?>" href="<?php echo esc_url( $button['url'] ); ?>"  <?php echo $additional_style; ?> target="<?php echo esc_attr( $button['target'] ); ?>">
 								<span class="btn__text"><?php echo esc_html( $button['title'] ); ?></span>
 								<?php $button_icon = get_sub_field( 'button_icon' ); ?>
 								<?php if ( $button_icon ) : ?>

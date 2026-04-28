@@ -1,0 +1,279 @@
+.brand-dna-section {
+  background-color: #10233A;
+}
+
+.brand-dna {
+  display: grid;
+  grid-template-columns: minmax(0, 536px) minmax(0, 648px);
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+  padding-block: 200px;
+}
+
+.brand-dna__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 536px;
+}
+
+.brand-dna__eyebrow,
+.brand-dna__description,
+.brand-dna__word,
+.brand-dna__caption {
+  margin: 0;
+}
+
+.brand-dna__eyebrow {
+  color: #FC9700;
+  font-size: 20px;
+  line-height: 2;
+  font-weight: 500;
+}
+
+.brand-dna__description {
+  color: #FFFFFF;
+  font-size: 24px;
+  line-height: 2;
+}
+
+.brand-dna__equation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  max-width: 648px;
+  margin-inline: auto;
+}
+
+.brand-dna__term {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.brand-dna__word {
+  font-size: 72px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.brand-dna__word-main {
+  color: #FFFFFF;
+}
+
+.brand-dna__word-muted {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.brand-dna__caption {
+  color: #FFFFFF;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.brand-dna__plus {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  color: #FC9700;
+  flex: 0 0 40px;
+}
+
+.brand-dna__plus::before,
+.brand-dna__plus::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: currentColor;
+  transform: translate(-50%, -50%);
+}
+
+.brand-dna__plus::before {
+  width: 2px;
+  height: 100%;
+}
+
+.brand-dna__plus::after {
+  width: 100%;
+  height: 2px;
+}
+
+@media only screen and (max-width: 1350px) {
+  .brand-dna {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .brand-dna {
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 120px;
+  }
+
+  .brand-dna__intro {
+    max-width: none;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .brand-dna {
+    padding-block: 88px;
+  }
+
+  .brand-dna__description {
+    font-size: 20px;
+  }
+
+  .brand-dna__word {
+    font-size: 48px;
+  }
+
+  .brand-dna__caption {
+    font-size: 18px;
+  }
+}
+.brand-dna-section {
+  background-color: #10233A;
+}
+
+.brand-dna {
+  display: grid;
+  grid-template-columns: minmax(0, 536px) minmax(0, 648px);
+  justify-content: space-between;
+  align-items: center;
+  gap: 80px;
+  padding-block: 200px;
+}
+@media only screen and (max-width: 1350px) {
+  .brand-dna {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 48px;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .brand-dna {
+    grid-template-columns: minmax(0, 1fr);
+    padding-block: 120px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .brand-dna {
+    padding-block: 88px;
+  }
+}
+.brand-dna__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 536px;
+}
+@media only screen and (max-width: 991px) {
+  .brand-dna__intro {
+    max-width: none;
+  }
+}
+.brand-dna__eyebrow, .brand-dna__description, .brand-dna__word, .brand-dna__caption {
+  margin: 0;
+}
+.brand-dna__eyebrow {
+  color: #FC9700;
+  font-size: 20px;
+  line-height: 2;
+  font-weight: 500;
+}
+.brand-dna__description {
+  color: #FFFFFF;
+  font-size: 24px;
+  line-height: 2;
+}
+@media only screen and (max-width: 767px) {
+  .brand-dna__description {
+    font-size: 20px;
+  }
+}
+.brand-dna__equation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  width: 100%;
+  max-width: 648px;
+  margin-inline: auto;
+}
+.brand-dna__term {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+.brand-dna__word {
+  font-size: 72px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  font-weight: 400;
+  color: #FFFFFF;
+  text-align: center;
+  white-space: nowrap;
+}
+@media only screen and (max-width: 767px) {
+  .brand-dna__word {
+    font-size: 48px;
+  }
+}
+.brand-dna__word-main {
+  color: #FFFFFF;
+}
+.brand-dna__word-muted {
+  color: rgba(255, 255, 255, 0.3);
+}
+.brand-dna__caption {
+  color: #FFFFFF;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+@media only screen and (max-width: 767px) {
+  .brand-dna__caption {
+    font-size: 18px;
+  }
+}
+.brand-dna__plus {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  color: #FC9700;
+  flex: 0 0 40px;
+}
+.brand-dna__plus::before, .brand-dna__plus::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: currentColor;
+  transform: translate(-50%, -50%);
+}
+.brand-dna__plus::before {
+  width: 2px;
+  height: 100%;
+}
+.brand-dna__plus::after {
+  width: 100%;
+  height: 2px;
+}
+
+/*# sourceMappingURL=style.css.map */

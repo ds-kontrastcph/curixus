@@ -1,0 +1,156 @@
+@import '../../scss/variable';
+
+$brand-dna-bg: $clr-base;
+$brand-dna-accent: #FC9700;
+$brand-dna-word-muted: rgba(255, 255, 255, 0.3);
+$brand-dna-description-width: 536px;
+$brand-dna-equation-width: 648px;
+$brand-dna-padding-block: 200px;
+$brand-dna-gap: 80px;
+$brand-dna-word-size: 72px;
+$brand-dna-description-size: 24px;
+$brand-dna-caption-size: 20px;
+$brand-dna-plus-size: 40px;
+$brand-dna-plus-line-size: 2px;
+
+.brand-dna-section {
+	background-color: $brand-dna-bg;
+}
+
+.brand-dna {
+	display: grid;
+	grid-template-columns: minmax(0, $brand-dna-description-width) minmax(0, $brand-dna-equation-width);
+	justify-content: space-between;
+	align-items: center;
+	gap: $brand-dna-gap;
+	padding-block: $brand-dna-padding-block;
+
+	@include desktop {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: 48px;
+	}
+
+	@include tablet {
+		grid-template-columns: minmax(0, 1fr);
+		padding-block: 120px;
+	}
+
+	@include mobile {
+		padding-block: 88px;
+	}
+
+	&__intro {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+		max-width: $brand-dna-description-width;
+
+		@include tablet {
+			max-width: none;
+		}
+	}
+
+	&__eyebrow,
+	&__description,
+	&__word,
+	&__caption {
+		margin: 0;
+	}
+
+	&__eyebrow {
+		color: $brand-dna-accent;
+		font-size: 20px;
+		line-height: 2;
+		font-weight: 500;
+	}
+
+	&__description {
+		color: $white;
+		font-size: $brand-dna-description-size;
+		line-height: 2;
+
+		@include mobile {
+			font-size: 20px;
+		}
+	}
+
+	&__equation {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 48px;
+		width: 100%;
+		max-width: $brand-dna-equation-width;
+		margin-inline: auto;
+	}
+
+	&__term {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 8px;
+		width: 100%;
+	}
+
+	&__word {
+		font-size: $brand-dna-word-size;
+		line-height: 1;
+		letter-spacing: -0.01em;
+		font-weight: 400;
+		color: $white;
+		text-align: center;
+		white-space: nowrap;
+
+		@include mobile {
+			font-size: 48px;
+		}
+	}
+
+	&__word-main {
+		color: $white;
+	}
+
+	&__word-muted {
+		color: $brand-dna-word-muted;
+	}
+
+	&__caption {
+		color: $white;
+		font-size: $brand-dna-caption-size;
+		line-height: 1.5;
+		text-align: center;
+
+		@include mobile {
+			font-size: 18px;
+		}
+	}
+
+	&__plus {
+		position: relative;
+		display: block;
+		width: $brand-dna-plus-size;
+		height: $brand-dna-plus-size;
+		color: $brand-dna-accent;
+		flex: 0 0 $brand-dna-plus-size;
+
+		&::before,
+		&::after {
+			content: '';
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			background-color: currentColor;
+			transform: translate(-50%, -50%);
+		}
+
+		&::before {
+			width: $brand-dna-plus-line-size;
+			height: 100%;
+		}
+
+		&::after {
+			width: 100%;
+			height: $brand-dna-plus-line-size;
+		}
+	}
+}

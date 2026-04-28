@@ -173,7 +173,7 @@
 }
 
 .btn {
-	border-radius: 30px;
+	border-radius: 0px;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
@@ -182,16 +182,19 @@
 	position: relative;
 	white-space: nowrap;
 	overflow: hidden;
-	font-size: px-to-rem(15);
+	font-size: px-to-rem(12);
 	line-height: 1.5;
-	font-weight: 600;
-	padding: px-to-rem(10) px-to-rem(20);
+	font-weight: 700;
+	padding: px-to-rem(24) px-to-rem(24);
 	font-family: $font-family-primary;
 	border: 0;
 	background: none;
 	transition: all 0.2s ease 0s;
 	text-decoration: none;
 	cursor: pointer;
+	min-width: var(--min-width, 0);
+	text-transform: uppercase;
+	letter-spacing: .2em;
 	&:hover {
 		text-decoration: none;
 	}
@@ -202,15 +205,17 @@
 		position: relative;
 		line-height: 1;
 		transition: transform 0.4s ease 0s;
-		flex: 0 0 22px;
+		flex: 0 0 1em;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		&--after {
 			order: 2;
+			margin-left: auto;
 		}
 		&--before {
 			order: -1;
+			margin-right: auto;
 		}
 		svg {
 			fill: currentColor;
@@ -227,110 +232,50 @@
 		}
 	}
 	&--primary {
-		background-color: var(--wp--preset--color--yellow, $clr-primary);
-		color: $clr-base;
+		background-color: #FC9700;
+		color: #10233A;
+		.btn__icon,
 		.btn__text {
-			color: $clr-base;
+			color: #10233A;
 		}
 		&:hover {
-			background-color: var(--wp--preset--color--darker-yellow, #A08A03);
+			background-color: #FDAC33;
 		}
 	}
 	&--secondary {
-		background-color: var(--wp--preset--color--cloud-white, $clr-white);
-		color: $clr-base;
+		background-color: #F5F5F5;
+		color: #10233A;
+		.btn__icon,
 		.btn__text {
-			color: $clr-base;
+			color: #10233A;
 		}
 		&:hover {
-			background-color: var(--wp--preset--color--light-blue, #A08A03);
+			background-color: #DEE0E2;
 		}
 	}
-	&--blue {
-		background-color: var(--wp--preset--color--light-blue, #A08A03);
-		color: $clr-base;
+	&--white-transparent {
+		background-color: rgba(255,255,255,.1);
+		color: #fff;
+		.btn__icon,
 		.btn__text {
-			color: $clr-base;
+			color: #fff;
 		}
 		&:hover {
-			background-color: var(--wp--preset--color--cloud-white, $clr-white);
+			background-color: rgba(255,255,255,.2);
 		}
 	}
-	&--dark {
-		background-color: var(--wp--preset--color--navy-blue, #0A1428);
-		color: $clr-base;
+	&--dark-transparent {
+		background-color: rgba(16,35,58,.05);
+		color: #10233A;
+		.btn__icon,
 		.btn__text {
-			color: $clr-base;
+			color: #10233A;
 		}
 		&:hover {
-			background-color: var(--wp--preset--color--cloud-white, $clr-white);
+			background-color: rgba(16,35,58,.1);
 		}
 	}
-	&--coral {
-		background-color: var(--wp--preset--color--warm-coral, #F88673);
-		color: $clr-base;
-		.btn__text {
-			color: $clr-base;
-		}
-		&:hover {
-			background-color: var(--wp--preset--color--darker-coral, #D5422A);
-		}
-	}
-	&--violet {
-		background-color: var(--wp--preset--color--vivid-violet, #926FDE);
-		color: $clr-base;
-		.btn__text {
-			color: $clr-base;
-		}
-		&:hover {
-			background-color: var(--wp--preset--color--darker-violet, #6A3CCF);
-		}
-	}
-	&--green {
-		background-color: var(--wp--preset--color--mint-green, #54F0A3);
-		color: $clr-base;
-		.btn__text {
-			color: $clr-base;
-		}
-		&:hover {
-			background-color: var(--wp--preset--color--darker-mint, #11AF61);
-		}
-	}
-
-	&--outline-white {
-		color: $clr-white;
-		box-shadow: inset 0 0 0 1px $clr-white;
-		.btn__text {
-			color: $clr-white;
-		}
-		&:hover {
-			color: $clr-base;
-			background-color: $clr-white;
-			.btn__text {
-				color: $clr-base;
-			}
-		}
-	}
-	&--inline-gradient {
-		color: #FFA600;
-		padding: 0;
-		.btn__text{
-			text-decoration: underline;
-			color: #FFA600;
-			background: linear-gradient(82deg, #FFDD0C 6.18%, #FFA600 48.98%, #FF790C 89.99%);
-			background-clip: text;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			
-		}
-		&:hover .btn__text{
-			text-decoration: none;
-			background: linear-gradient(270deg, #FFDD0C 6.18%, #FFA600 48.98%, #FF790C 89.99%);
-			background-clip: text;
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-		}
-	}
+	
 
 
 
@@ -354,11 +299,13 @@
 		}
 	}
 	&--lg {
-		font-size: px-to-rem(18);
-		border-radius: 40px;
+		font-size: px-to-rem(13);
 		line-height: 1.5;
+		padding: px-to-rem(40);
+		letter-spacing: .1em;
 		.btn__icon {
-			flex: 0 0 20px;
+			flex: 0 0 15px;
+			margin-block: -2px;
 		}
 	}
 	&--wide {

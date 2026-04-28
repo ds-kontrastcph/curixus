@@ -1,0 +1,33 @@
+{
+	"name": "curixus/icon-cards",
+	"title": "Icon Cards",
+	"description": "Row of icon cards with title and description on dark background",
+	"category": "curixus",
+	"icon": "grid-view",
+	"keywords": ["icon", "cards", "tiles", "grid", "focus"],
+	"acf": {
+		"blockVersion": 3,
+		"renderTemplate": "block-render.php"
+	},
+	"supports": {
+		"align": ["none"],
+		"anchor": true,
+		"spacing": {
+			"margin": ["top", "bottom"],
+			"padding": ["top", "bottom"],
+			"units": [ "px" ]
+		},
+		"color": {
+			"background": false,
+			"gradients": false,
+			"link": false
+		}
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "none"
+		}
+	},
+	"style": ["file:./style.css"]
+}

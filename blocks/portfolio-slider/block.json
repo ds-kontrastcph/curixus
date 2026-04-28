@@ -1,0 +1,36 @@
+{
+	"name": "curixus/portfolio-slider",
+	"title": "Portfolio Slider block",
+	"description": "Display portfolio posts as a slider.",
+	"category": "curixus",
+	"icon": "images-alt2",
+	"keywords": ["portfolio", "slider", "cases"],
+	"acf": {
+		"mode": "preview",
+		"blockVersion": 3,
+		"renderTemplate": "block-render.php"
+	},
+	"example": {
+		"attributes": {
+			"preview": true,
+			"data": {
+				"preview_image_help": "screenshot.png"
+			}
+		}
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		}
+	},
+	"supports": {
+		"align": ["full"],
+		"anchor": true,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		}
+	},
+	"style": ["file:./style.css"]
+}

@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+.editor-styles-wrapper {
+	line-height: normal;
+	
+	@import "_variable";
+	@import "_reset";
+	@import "_components";
+
+}
+
+.select2-swp-acf-si__icon {
+	fill: currentColor;
+	stroke: currentColor;
+}
+
+.color-test-item {
+	display: inline-block;
+	vertical-align: top;
+	width: 16px;
+	height: 16px;
+	margin: 3px 0 0 0;
+	border-radius: 3px;
+	border: 1px solid transparent;
+}

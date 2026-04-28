@@ -1,0 +1,39 @@
+{
+	"name": "curixus/application-process",
+	"title": "Application Process",
+	"description": "Application process section with CTA and timeline.",
+	"category": "curixus",
+	"icon": "editor-ol",
+	"keywords": ["process", "timeline", "application", "cta"],
+	"acf": {
+		"mode": "preview",
+		"blockVersion": 3,
+		"renderTemplate": "block-render.php"
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		}
+	},
+	"supports": {
+		"align": ["full"],
+		"anchor": true,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": false,
+			"gradients": false,
+			"link": false
+		},
+		"dimensions": {
+			"minHeight": false
+		},
+		"position": {
+			"sticky": false
+		}
+	},
+	"style": ["file:./style.css"]
+}

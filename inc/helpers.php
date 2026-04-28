@@ -175,3 +175,6 @@ function get_excerpt_trim($num_words='20', $more='...', $post_id = ''){
 	$excerpt = wp_trim_words( $excerpt, $num_words , $more );
 	return $excerpt;
 }
+
+// remove <br> and <p> from CF7
+add_filter( 'wpcf7_autop_or_not', '__return_false' );

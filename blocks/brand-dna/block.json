@@ -1,0 +1,39 @@
+{
+	"name": "curixus/brand-dna",
+	"title": "Brand DNA",
+	"description": "Brand statement block with split word composition.",
+	"category": "curixus",
+	"icon": "editor-aligncenter",
+	"keywords": ["brand", "dna", "statement", "nexus"],
+	"acf": {
+		"mode": "preview",
+		"blockVersion": 3,
+		"renderTemplate": "block-render.php"
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		}
+	},
+	"supports": {
+		"align": ["full"],
+		"anchor": true,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": false,
+			"gradients": false,
+			"link": false
+		},
+		"dimensions": {
+			"minHeight": false
+		},
+		"position": {
+			"sticky": false
+		}
+	},
+	"style": ["file:./style.css"]
+}

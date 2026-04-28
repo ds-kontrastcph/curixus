@@ -3,6 +3,11 @@
 		@content;
 	}
 }
+@mixin desktop-1560 {
+	@media only screen and (max-width: 1560px) {
+		@content;
+	}
+}
 @mixin desktop-1400 {
 	@media only screen and (max-width: 1400px) {
 		@content;
@@ -92,7 +97,7 @@ $font-family-primary: "Manrope", sans-serif;
 $font-family-secondary: "Manrope", sans-serif;
 
 
-$clr-base: #0A1428;
+$clr-base: #10233A;
 
 $white: #FFFFFF;
 $primary: #FFDD0C;

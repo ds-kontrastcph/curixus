@@ -1,0 +1,48 @@
+{
+	"name": "curixus/index-hero",
+	"title": "Index Hero",
+	"description": "",
+	"category": "curixus",
+	"icon": "welcome-view-site",
+	"keywords": ["btn", "link", "button", "href"],
+	"acf": {
+		"mode": "preview",
+		"blockVersion": 3,
+		"renderTemplate": "block-render.php"
+	},
+	"example": {
+		"attributes": {
+			"preview": true,
+			"data": {
+				"preview_image_help": "screenshot.png"
+			}
+		}
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		}
+	},
+	"supports": {
+		"align": ["full"],
+		"anchor": true,
+		
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": false,
+			"gradients": false,
+			"link": false
+		},
+		"dimensions": {
+			"minHeight": false
+		},
+		"position": {
+			"sticky": false
+		}
+	},
+	"style": ["file:./style.css"]
+}

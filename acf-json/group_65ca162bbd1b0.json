@@ -221,17 +221,12 @@
                         "class": "",
                         "id": ""
                     },
-                    "admin_column_enabled": 0,
                     "choices": {
-                        "primary": "<span class=\"color-test-item\" style=\"background-color: #FFDD0C;\"><\/span> Primary",
-                        "secondary": "<span class=\"color-test-item\" style=\"background-color: #FAFAFA;\"><\/span> Secondary",
-                        "blue": "<span class=\"color-test-item\" style=\"background-color: #6284C8;\"><\/span> Blue",
-                        "dark": "<span class=\"color-test-item\" style=\"background-color: #1A1825;\"><\/span> Dark",
-                        "transparent": "<span class=\"color-test-item\" ><\/span> Transparent",
-                        "coral": "<span class=\"color-test-item\" style=\"background-color: #F88673;\"><\/span> Coral",
-                        "violet": "<span class=\"color-test-item\" style=\"background-color: #926FDE;\"><\/span> Violet",
-                        "green": "<span class=\"color-test-item\" style=\"background-color: #54F0A3;\"><\/span> Green",
-                        "inline-gradient": "<span class=\"color-test-item\" style=\"background: linear-gradient(82deg, #FFDD0C 6.18%, #FFA600 48.98%, #FF790C 89.99%);\"><\/span> Gradient"
+                        "primary": "<span class=\"color-test-item\" style=\"background-color: #FC9700;\"><\/span> Primary",
+                        "secondary": "<span class=\"color-test-item\" style=\"background-color: #F5F5F5;\"><\/span> Secondary",
+                        "white-transparent": "<span class=\"color-test-item\" style=\"background-color: #28394E;\"><\/span> White transparent",
+                        "dark-transparent": "<span class=\"color-test-item\" style=\"background-color: #F3F4F5;\"><\/span> Dark transparent",
+                        "transparent": "<span class=\"color-test-item\" ><\/span> Transparent"
                     },
                     "default_value": "primary",
                     "return_format": "value",
@@ -289,44 +284,7 @@
                     "default_path": "images",
                     "svg_files": "images\/icons.svg",
                     "allow_in_bindings": 1,
-                    "choices": {
-                        "icon-down": {
-                            "ID": "icon-down"
-                        },
-                        "icon-up": {
-                            "ID": "icon-up"
-                        },
-                        "icon-cross": {
-                            "ID": "icon-cross"
-                        },
-                        "icon-search": {
-                            "ID": "icon-search"
-                        },
-                        "icon-upload": {
-                            "ID": "icon-upload"
-                        },
-                        "icon-download": {
-                            "ID": "icon-download"
-                        },
-                        "icon-link": {
-                            "ID": "icon-link"
-                        },
-                        "icon-plus": {
-                            "ID": "icon-plus"
-                        },
-                        "icon-arrow": {
-                            "ID": "icon-arrow"
-                        },
-                        "icon-clipboard": {
-                            "ID": "icon-clipboard"
-                        },
-                        "icon-calendar": {
-                            "ID": "icon-calendar"
-                        },
-                        "icon-pin": {
-                            "ID": "icon-pin"
-                        }
-                    },
+                    "choices": [],
                     "ui": 1,
                     "ajax": 0,
                     "placeholder": "",
@@ -415,28 +373,6 @@
                     "prepend": "",
                     "append": "px",
                     "parent_repeater": "field_65ca16ddd92b1"
-                },
-                {
-                    "key": "field_67f31a8b0ga01",
-                    "label": "Tracking class",
-                    "name": "ga_tracking_class",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "Optional CSS class for analytics (e.g. ga-btn--CONTACT_PRIMARY). Not used for styling.",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "ga-btn--EVENT_NAME",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_65ca16ddd92b1"
                 }
             ]
         }
@@ -446,7 +382,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "yh\/button-group"
+                "value": "curixus\/button-group"
             }
         ]
     ],
@@ -460,5 +396,7 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1770892200
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1776857977
 }
