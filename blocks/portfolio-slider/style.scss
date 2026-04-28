@@ -12,7 +12,6 @@ $portfolio-category-color: #FC9700;
 
 .portfolio-slider-section {
 	padding-block: $portfolio-section-padding-desktop;
-	background-color: $clr-white;
 
 	@include tablet {
 		padding-block: $portfolio-section-padding-tablet;
