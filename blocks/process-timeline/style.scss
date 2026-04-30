@@ -4,6 +4,9 @@
 	background-color: transparent;
 	.container {
 		max-width: 1144px;
+		@include mobile {
+			padding-inline: 0px;
+		}
 	}
 }
 
@@ -19,7 +22,8 @@
 	}
 
 	@include mobile {
-		gap: 32px;
+		gap: 52px;
+		padding-block: 80px;
 	}
 
 	&__header {
@@ -28,6 +32,10 @@
 		align-items: center;
 		gap: 16px;
 		text-align: center;
+		@include mobile {
+			text-align: left;
+			align-items: flex-start;
+		}
 	}
 
 	&__title {
@@ -92,7 +100,14 @@
 
 		@include mobile {
 			grid-template-columns: 1fr;
-			gap: 40px;
+			gap: 48px;
+			&::before {
+				display: block;
+				left: 36px;
+				top: 72px;
+				height: calc(100% - 130px);
+				width: 1px;
+			}
 		}
 	}
 
@@ -107,6 +122,10 @@
 
 		@include mobile {
 			gap: 24px;
+			display: grid;
+			grid-template-columns: 72px 1fr;
+			align-items: flex-start;
+			text-align: left;
 		}
 	}
 
@@ -159,6 +178,11 @@
 		align-items: center;
 		gap: 16px;
 		max-width: 240px;
+		@include mobile {
+			max-width: 100%;
+			align-items: flex-start;
+			gap: 7px;
+		}
 	}
 
 	&__step-title {

@@ -36,7 +36,8 @@ $brand-dna-plus-line-size: 2px;
 	}
 
 	@include mobile {
-		padding-block: 88px;
+		padding-block: 80px;
+		gap: 80px;
 	}
 
 	&__intro {
@@ -47,6 +48,9 @@ $brand-dna-plus-line-size: 2px;
 
 		@include tablet {
 			max-width: none;
+		}
+		@include mobile {
+			gap: 17px;
 		}
 	}
 
@@ -62,6 +66,9 @@ $brand-dna-plus-line-size: 2px;
 		font-size: 20px;
 		line-height: 2;
 		font-weight: 500;
+		@include mobile {
+			font-size: 16px;
+		}
 	}
 
 	&__description {
@@ -82,6 +89,9 @@ $brand-dna-plus-line-size: 2px;
 		width: 100%;
 		max-width: $brand-dna-equation-width;
 		margin-inline: auto;
+		@include mobile {
+			gap: 23px;
+		}
 	}
 
 	&__term {
@@ -90,6 +100,9 @@ $brand-dna-plus-line-size: 2px;
 		align-items: center;
 		gap: 8px;
 		width: 100%;
+		@include mobile {
+			max-width: 260px;
+		}
 	}
 
 	&__word {
@@ -121,7 +134,8 @@ $brand-dna-plus-line-size: 2px;
 		text-align: center;
 
 		@include mobile {
-			font-size: 18px;
+			font-size: 16px;
+			text-wrap: balance;
 		}
 	}
 
@@ -132,6 +146,12 @@ $brand-dna-plus-line-size: 2px;
 		height: $brand-dna-plus-size;
 		color: $brand-dna-accent;
 		flex: 0 0 $brand-dna-plus-size;
+		@include mobile {
+			width: 24px;
+			height: 24px;
+			flex: 0 0 24px;
+			margin: 0 0 10px;
+		}
 
 		&::before,
 		&::after {

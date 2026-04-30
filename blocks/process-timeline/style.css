@@ -4,6 +4,11 @@
 .process-timeline-section .container {
   max-width: 1144px;
 }
+@media only screen and (max-width: 767px) {
+  .process-timeline-section .container {
+    padding-inline: 0px;
+  }
+}
 
 .process-timeline {
   display: flex;
@@ -19,7 +24,8 @@
 }
 @media only screen and (max-width: 767px) {
   .process-timeline {
-    gap: 32px;
+    gap: 52px;
+    padding-block: 80px;
   }
 }
 .process-timeline__header {
@@ -28,6 +34,12 @@
   align-items: center;
   gap: 16px;
   text-align: center;
+}
+@media only screen and (max-width: 767px) {
+  .process-timeline__header {
+    text-align: left;
+    align-items: flex-start;
+  }
 }
 .process-timeline__title {
   margin: 0;
@@ -89,7 +101,14 @@
 @media only screen and (max-width: 767px) {
   .process-timeline__steps {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 48px;
+  }
+  .process-timeline__steps::before {
+    display: block;
+    left: 36px;
+    top: 72px;
+    height: calc(100% - 130px);
+    width: 1px;
   }
 }
 .process-timeline__step {
@@ -104,6 +123,10 @@
 @media only screen and (max-width: 767px) {
   .process-timeline__step {
     gap: 24px;
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    align-items: flex-start;
+    text-align: left;
   }
 }
 .process-timeline__badge {
@@ -149,6 +172,13 @@
   align-items: center;
   gap: 16px;
   max-width: 240px;
+}
+@media only screen and (max-width: 767px) {
+  .process-timeline__step-content {
+    max-width: 100%;
+    align-items: flex-start;
+    gap: 7px;
+  }
 }
 .process-timeline__step-title {
   margin: 0;

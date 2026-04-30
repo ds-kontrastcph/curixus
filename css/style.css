@@ -702,8 +702,8 @@ section {
 @media only screen and (max-width: 767px) {
   .site-main .container .alignfull:not(.wp-block-image) {
     width: auto;
-    margin-left: -16px;
-    margin-right: -16px;
+    margin-left: -24px;
+    margin-right: -24px;
   }
 }
 .site-main .container .align .container {
@@ -734,6 +734,11 @@ section {
   -ms-grid-columns: repeat(12, 1fr);
   grid-template-columns: repeat(12, 1fr);
   grid-gap: 0 24px;
+}
+@media only screen and (max-width: 767px) {
+  .grid-row {
+    column-gap: 10px;
+  }
 }
 .grid-row--center {
   align-items: center;
@@ -957,6 +962,12 @@ section {
   object-fit: contain;
   vertical-align: top;
 }
+@media only screen and (max-width: 767px) {
+  .btn__icon {
+    margin-block: -2px;
+    flex: 0 0 0.6em;
+  }
+}
 .btn--primary {
   background-color: #FC9700;
   color: #10233A;
@@ -1025,6 +1036,16 @@ section {
 .btn--lg .btn__icon {
   flex: 0 0 15px;
   margin-block: -2px;
+}
+@media only screen and (max-width: 767px) {
+  .btn--lg .btn__icon {
+    flex: 0 0 10px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .btn--lg {
+    padding: 32px 32px;
+  }
 }
 .btn--wide {
   display: flex;
@@ -1693,7 +1714,7 @@ section {
     margin-top: -3rem;
   }
   .text-page__featured-image {
-    height: 16.25rem;
+    height: auto;
   }
   .text-page__body {
     padding-block: 4rem;

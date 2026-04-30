@@ -21,7 +21,8 @@
 }
 @media only screen and (max-width: 767px) {
   .impact-metrics {
-    padding-block: 72px;
+    padding-block: 80px;
+    gap: 48px;
   }
 }
 .impact-metrics__item {
@@ -36,7 +37,12 @@
 }
 @media only screen and (max-width: 991px) {
   .impact-metrics__item {
-    padding: 24px;
+    padding: 0 24px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .impact-metrics__item {
+    gap: 8px;
   }
 }
 .impact-metrics__value, .impact-metrics__description {
@@ -51,7 +57,7 @@
 }
 @media only screen and (max-width: 767px) {
   .impact-metrics__value {
-    font-size: 64px;
+    font-size: 48px;
   }
 }
 .impact-metrics__description {

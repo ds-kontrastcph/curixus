@@ -686,8 +686,8 @@ section {
 		width: 100cqw;
 		@include mobile {
 			width: auto;
-			margin-left: -16px;
-			margin-right: -16px;
+			margin-left: -24px;
+			margin-right: -24px;
 		}
 	}
 	.align {

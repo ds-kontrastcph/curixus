@@ -24,10 +24,11 @@
 }
 @media only screen and (max-width: 767px) {
   .application-form-section {
-    padding-block: 40px;
+    padding-block: 0px;
+    background-color: #F5F5F5;
   }
   .application-form-section::before {
-    inset-block: 40px;
+    display: none;
   }
 }
 
@@ -53,7 +54,7 @@
 }
 @media only screen and (max-width: 767px) {
   .application-form {
-    padding: 32px 24px;
+    padding: 76px 0px;
   }
 }
 .application-form__intro {
@@ -74,7 +75,7 @@
 }
 @media only screen and (max-width: 767px) {
   .application-form__title {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 }
 .application-form__description {
@@ -146,6 +147,11 @@
 }
 .application-form__helper {
   max-width: 100%;
+}
+@media only screen and (max-width: 767px) {
+  .application-form__helper {
+    font-size: 11px;
+  }
 }
 .application-form__control {
   display: block;
@@ -263,6 +269,11 @@
     align-items: flex-start;
   }
 }
+@media only screen and (max-width: 767px) {
+  .application-form__footer {
+    gap: 23px;
+  }
+}
 .application-form__review {
   max-width: 317px;
   margin: 0;
@@ -280,6 +291,11 @@
 @media only screen and (max-width: 991px) {
   .application-form__submit.btn {
     max-width: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .application-form__submit.btn {
+    --min-width: 0;
   }
 }
 .application-form .wpcf7-spinner {

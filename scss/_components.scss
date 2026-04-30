@@ -6,6 +6,9 @@
 	-ms-grid-columns:repeat(12, 1fr);
 	grid-template-columns:repeat(12, 1fr);
 	grid-gap: 0 24px;
+	@include mobile {
+		column-gap: 10px;
+	}
 	&--center {
 		align-items: center;
 	}
@@ -230,6 +233,10 @@
 			object-fit: contain;
 			vertical-align: top;
 		}
+		@include mobile {
+			margin-block: -2px;
+			flex: 0 0 0.6em;
+		}
 	}
 	&--primary {
 		background-color: #FC9700;
@@ -306,6 +313,12 @@
 		.btn__icon {
 			flex: 0 0 15px;
 			margin-block: -2px;
+			@include mobile {
+				flex: 0 0 10px;
+			}
+		}
+		@include mobile {
+			padding: 32px 32px;
 		}
 	}
 	&--wide {

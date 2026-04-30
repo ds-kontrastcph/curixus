@@ -25,10 +25,10 @@
 	}
 
 	@include mobile {
-		padding-block: 40px;
-
+		padding-block: 0px;
+		background-color: #F5F5F5;
 		&::before {
-			inset-block: 40px;
+			display: none;
 		}
 	}
 } 
@@ -52,7 +52,7 @@
 	}
 
 	@include mobile {
-		padding: 32px 24px;
+		padding: 76px 0px;
 	}
 
 	&__intro {
@@ -75,7 +75,7 @@
 		letter-spacing: -0.01em;
 
 		@include mobile {
-			font-size: px-to-rem(28);
+			font-size: px-to-rem(32);
 		}
 	}
 
@@ -162,6 +162,9 @@
 
 	&__helper {
 		max-width: 100%;
+		@include mobile {
+			font-size: 11px;
+		}
 	}
 
 	&__control {
@@ -289,6 +292,9 @@
 			flex-direction: column;
 			align-items: flex-start;
 		}
+		@include mobile {
+			gap: 23px;
+		}
 	}
 
 	&__review {
@@ -308,6 +314,9 @@
 
 		@include tablet {
 			max-width: none;
+		}
+		@include mobile {
+			--min-width: 0;
 		}
 	}
 

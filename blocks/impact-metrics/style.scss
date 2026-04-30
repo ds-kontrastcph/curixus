@@ -26,7 +26,8 @@ $impact-metrics-muted: #778493;
 	}
 
 	@include mobile {
-		padding-block: 72px;
+		padding-block: 80px;
+		gap: 48px;
 	}
 
 	&__item {
@@ -41,8 +42,10 @@ $impact-metrics-muted: #778493;
 
 		
 		@include tablet {
-			padding: 24px;
-
+			padding: 0 24px;
+		}
+		@include mobile {
+			gap: 8px;
 		}
 	}
 
@@ -59,7 +62,7 @@ $impact-metrics-muted: #778493;
 		font-weight: 400;
 
 		@include mobile {
-			font-size: 64px;
+			font-size: 48px;
 		}
 	}
 
