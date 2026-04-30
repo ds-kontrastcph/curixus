@@ -18,7 +18,7 @@
 		@include tablet {
 			-ms-grid-columns:1fr;
 			grid-template-columns:1fr;
-			grid-gap: 30px;
+			grid-gap: 40px;
 		}
 		&--right {
 			@include mf-desktop {
@@ -50,15 +50,7 @@
 			}
 		}
 	}
-	&__visual {
-		@include tablet {
-			-webkit-box-ordinal-group: 2;
-			-moz-box-ordinal-group: 2;
-			-ms-flex-order: 2;
-			-webkit-order: 2;
-			order: 2;
-		}
-	}
+	
 	h1,
 	h2, h3, h4, p {
 		margin: 0;

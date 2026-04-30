@@ -27,8 +27,8 @@
 @media only screen and (max-width: 991px) {
   .portfolio-slider-section__head {
     grid-template-columns: 1fr;
-    gap: 24px;
-    margin-bottom: 48px;
+    gap: 21px;
+    margin-bottom: 64px;
   }
 }
 .portfolio-slider-section__title {
@@ -40,6 +40,11 @@
 .portfolio-slider-section__description {
   color: #10233A;
   line-height: 1.5;
+}
+@media only screen and (max-width: 767px) {
+  .portfolio-slider-section__description {
+    line-height: 2;
+  }
 }
 .portfolio-slider-section__empty {
   color: #10233A;
@@ -76,7 +81,7 @@
 @media only screen and (max-width: 767px) {
   .portfolio-card {
     width: 280px;
-    height: 420px;
+    height: 336px;
   }
 }
 .portfolio-card__image {
@@ -118,12 +123,22 @@
   text-transform: uppercase;
   color: #FC9700;
 }
+@media only screen and (max-width: 767px) {
+  .portfolio-card__category {
+    font-size: 12px;
+  }
+}
 .portfolio-card__title {
   margin: 0;
   color: #FFFFFF;
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.01em;
+}
+@media only screen and (max-width: 767px) {
+  .portfolio-card__title {
+    font-size: 20px;
+  }
 }
 .portfolio-card__excerpt {
   margin: 0;
@@ -135,6 +150,12 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+@media only screen and (max-width: 767px) {
+  .portfolio-card__excerpt {
+    font-size: 12px;
+    line-height: 1.5;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

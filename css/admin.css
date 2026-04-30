@@ -684,8 +684,8 @@
 @media only screen and (max-width: 767px) {
   .editor-styles-wrapper .site-main .container .alignfull:not(.wp-block-image) {
     width: auto;
-    margin-left: -16px;
-    margin-right: -16px;
+    margin-left: -24px;
+    margin-right: -24px;
   }
 }
 .editor-styles-wrapper .site-main .container .align .container {
@@ -713,7 +713,12 @@
   display: grid;
   -ms-grid-columns: repeat(12, 1fr);
   grid-template-columns: repeat(12, 1fr);
-  grid-gap: 0 12px;
+  grid-gap: 0 24px;
+}
+@media only screen and (max-width: 767px) {
+  .editor-styles-wrapper .grid-row {
+    column-gap: 10px;
+  }
 }
 .editor-styles-wrapper .grid-row--center {
   align-items: center;
@@ -934,6 +939,12 @@
   object-fit: contain;
   vertical-align: top;
 }
+@media only screen and (max-width: 767px) {
+  .editor-styles-wrapper .btn__icon {
+    margin-block: -2px;
+    flex: 0 0 0.6em;
+  }
+}
 .editor-styles-wrapper .btn--primary {
   background-color: #FC9700;
   color: #10233A;
@@ -1002,6 +1013,16 @@
 .editor-styles-wrapper .btn--lg .btn__icon {
   flex: 0 0 15px;
   margin-block: -2px;
+}
+@media only screen and (max-width: 767px) {
+  .editor-styles-wrapper .btn--lg .btn__icon {
+    flex: 0 0 10px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .editor-styles-wrapper .btn--lg {
+    padding: 32px 32px;
+  }
 }
 .editor-styles-wrapper .btn--wide {
   display: flex;

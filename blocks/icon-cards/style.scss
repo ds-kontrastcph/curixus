@@ -6,6 +6,15 @@ $border-card:  rgba(255, 255, 255, 0.2);
 .icon-cards {
 	background: $clr-base;
 
+
+	& + p.has-text-align-right {
+		@include mobile {
+			text-align: left;
+			font-size: 16px;
+			line-height: 1.5;
+			margin-top: 32px;
+		}
+	}
 	&__inner {
 		
 	}
@@ -22,6 +31,7 @@ $border-card:  rgba(255, 255, 255, 0.2);
 
 		@include mobile {
 			grid-template-columns: repeat(2, 1fr);
+			gap: 8px;
 		}
 
 		@include mobile-sm {
@@ -36,13 +46,22 @@ $border-card:  rgba(255, 255, 255, 0.2);
 		display: flex;
 		flex-direction: column;
 		gap: 32px;
+		@include mobile {
+			display: grid;
+			grid-template-columns: 64px 1fr;
+			gap: 32px;
+			padding: 23px 24px;
+		}
 	}
 
 	&__icon {
 		width: 72px;
 		height: 72px;
 		flex-shrink: 0;
-
+		@include mobile {
+			width: 64px;
+			height: 64px;
+		}
 		img {
 			display: block;
 			width: 100%;
@@ -55,6 +74,9 @@ $border-card:  rgba(255, 255, 255, 0.2);
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
+		@include mobile {
+			gap: 8px;
+		}
 	}
 
 	&__title {

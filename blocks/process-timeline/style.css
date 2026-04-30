@@ -1,0 +1,201 @@
+.process-timeline-section {
+  background-color: transparent;
+}
+.process-timeline-section .container {
+  max-width: 1144px;
+}
+@media only screen and (max-width: 767px) {
+  .process-timeline-section .container {
+    padding-inline: 0px;
+  }
+}
+
+.process-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 51px;
+  padding-block: 200px 240px;
+}
+@media only screen and (max-width: 991px) {
+  .process-timeline {
+    gap: 40px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .process-timeline {
+    gap: 52px;
+    padding-block: 80px;
+  }
+}
+.process-timeline__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+@media only screen and (max-width: 767px) {
+  .process-timeline__header {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+.process-timeline__title {
+  margin: 0;
+  color: #10233A;
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+@media only screen and (max-width: 991px) {
+  .process-timeline__title {
+    font-size: 40px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .process-timeline__title {
+    font-size: 32px;
+  }
+}
+.process-timeline__subtitle {
+  margin: 0;
+  max-width: 720px;
+  color: #778493;
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+}
+.process-timeline__steps {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.process-timeline__steps::before {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: calc((100% - 72px) / 8);
+  right: calc((100% - 72px) / 8);
+  height: 1px;
+  background-color: rgba(16, 35, 58, 0.2);
+  z-index: 0;
+  pointer-events: none;
+}
+@media only screen and (max-width: 991px) {
+  .process-timeline__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 48px 24px;
+  }
+  .process-timeline__steps::before {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .process-timeline__steps {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .process-timeline__steps::before {
+    display: block;
+    left: 36px;
+    top: 72px;
+    height: calc(100% - 130px);
+    width: 1px;
+  }
+}
+.process-timeline__step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  text-align: center;
+}
+@media only screen and (max-width: 767px) {
+  .process-timeline__step {
+    gap: 24px;
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+.process-timeline__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+}
+.process-timeline__step--number .process-timeline__badge {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(16, 35, 58, 0.2);
+}
+.process-timeline__step--icon .process-timeline__badge {
+  background-color: #10233A;
+  color: #FFFFFF;
+}
+.process-timeline__badge-label {
+  color: #10233A;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+}
+.process-timeline__badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+}
+.process-timeline__badge-image {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+.process-timeline__step-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 240px;
+}
+@media only screen and (max-width: 767px) {
+  .process-timeline__step-content {
+    max-width: 100%;
+    align-items: flex-start;
+    gap: 7px;
+  }
+}
+.process-timeline__step-title {
+  margin: 0;
+  color: #10233A;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.process-timeline__step-description {
+  margin: 0;
+  color: #778493;
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/*# sourceMappingURL=style.css.map */

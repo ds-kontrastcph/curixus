@@ -21,7 +21,7 @@
   .visual-section__wrap {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
-    grid-gap: 30px;
+    grid-gap: 40px;
   }
 }
 @media only screen and (min-width: 992px) {
@@ -55,15 +55,6 @@
   .visual-section__wrap--wide.visual-section__wrap--right {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
-  }
-}
-@media only screen and (max-width: 991px) {
-  .visual-section__visual {
-    -webkit-box-ordinal-group: 2;
-    -moz-box-ordinal-group: 2;
-    -ms-flex-order: 2;
-    -webkit-order: 2;
-    order: 2;
   }
 }
 .visual-section h1,

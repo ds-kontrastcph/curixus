@@ -1,0 +1,206 @@
+@import '../../scss/variable';
+
+.process-timeline-section {
+	background-color: transparent;
+	.container {
+		max-width: 1144px;
+		@include mobile {
+			padding-inline: 0px;
+		}
+	}
+}
+
+.process-timeline {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 51px;
+	padding-block: 200px 240px;
+
+	@include tablet {
+		gap: 40px;
+	}
+
+	@include mobile {
+		gap: 52px;
+		padding-block: 80px;
+	}
+
+	&__header {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+		text-align: center;
+		@include mobile {
+			text-align: left;
+			align-items: flex-start;
+		}
+	}
+
+	&__title {
+		margin: 0;
+		color: $clr-base;
+		font-family: $font-family-primary;
+		font-weight: 400;
+		font-size: 48px;
+		line-height: 1;
+		letter-spacing: -0.01em;
+
+		@include tablet {
+			font-size: 40px;
+		}
+
+		@include mobile {
+			font-size: 32px;
+		}
+	}
+
+	&__subtitle {
+		margin: 0;
+		max-width: 720px;
+		color: $clr-footer-muted;
+		font-family: $font-family-primary;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 1.5;
+	}
+
+	&__steps {
+		position: relative;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 24px;
+		margin: 0;
+		padding: 0;
+		list-style: none;
+
+		// Horizontal connecting line, runs from center of first badge to center of last badge.
+		// Math: with N=4 equal columns separated by gap=24px, half a column equals (100% - 72px) / 8.
+		&::before {
+			content: '';
+			position: absolute;
+			top: 36px;
+			left: calc((100% - 72px) / 8);
+			right: calc((100% - 72px) / 8);
+			height: 1px;
+			background-color: rgba(16, 35, 58, 0.2);
+			z-index: 0;
+			pointer-events: none;
+		}
+
+		@include tablet {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 48px 24px;
+
+			&::before {
+				display: none;
+			}
+		}
+
+		@include mobile {
+			grid-template-columns: 1fr;
+			gap: 48px;
+			&::before {
+				display: block;
+				left: 36px;
+				top: 72px;
+				height: calc(100% - 130px);
+				width: 1px;
+			}
+		}
+	}
+
+	&__step {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 40px;
+		text-align: center;
+
+		@include mobile {
+			gap: 24px;
+			display: grid;
+			grid-template-columns: 72px 1fr;
+			align-items: flex-start;
+			text-align: left;
+		}
+	}
+
+	&__badge {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 72px;
+		height: 72px;
+	}
+
+	&__step--number &__badge {
+		background-color: $white;
+		border: 1px solid rgba(16, 35, 58, 0.2);
+	}
+
+	&__step--icon &__badge {
+		background-color: $clr-base;
+		color: $white;
+	}
+
+	&__badge-label {
+		color: $clr-base;
+		font-family: $font-family-primary;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 1;
+	}
+
+	&__badge-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 32px;
+		height: 32px;
+		overflow: hidden;
+	}
+
+	&__badge-image {
+		display: block;
+		width: 32px;
+		height: 32px;
+		object-fit: contain;
+	}
+
+	&__step-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 16px;
+		max-width: 240px;
+		@include mobile {
+			max-width: 100%;
+			align-items: flex-start;
+			gap: 7px;
+		}
+	}
+
+	&__step-title {
+		margin: 0;
+		color: $clr-base;
+		font-family: $font-family-primary;
+		font-weight: 500;
+		font-size: 20px;
+		line-height: 1;
+		letter-spacing: -0.01em;
+	}
+
+	&__step-description {
+		margin: 0;
+		color: $clr-footer-muted;
+		font-family: $font-family-primary;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 1.5;
+	}
+}

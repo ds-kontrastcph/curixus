@@ -25,6 +25,11 @@ $clr-muted:  #778493;
 			right: auto;
 			left: 760px;
 		}
+		@include tablet {
+			width: 100%;
+			position: relative;
+			left: auto;
+		}
 	}
 
 
@@ -33,6 +38,10 @@ $clr-muted:  #778493;
 		position: absolute;
 		inset: 0 0 23px 0;
 		overflow: hidden;
+		@include tablet {
+			position: relative;
+			inset: auto;
+		}
 	}
 
 	&__img {
@@ -61,8 +70,8 @@ $clr-muted:  #778493;
 		}
 
 		@include mobile {
-			padding-top: 60px;
-			padding-bottom: 40px;
+			padding-top: 64px;
+			padding-bottom: 64px;
 		}
 	}
 
@@ -96,11 +105,16 @@ $clr-muted:  #778493;
 		color: $clr-base;
 		letter-spacing: -0.48px;
 		margin: 0;
+		@include mobile {
+			font-size: 32px;
+		}
 	}
 
 	// ── CTA Buttons ────────────────────────────────────────────────────
 	&__cta {
-		
+		@include mobile {
+			background: linear-gradient(180deg, transparent 10%, transparent 38%, #10233A 38%, #10233A 100%);
+		}
 	}
 
 	&__cta-inner {
@@ -111,6 +125,7 @@ $clr-muted:  #778493;
 		@include mobile {
 			flex-direction: column;
 			gap: 0;
+			margin-bottom: -16px;
 		}
 	}
 

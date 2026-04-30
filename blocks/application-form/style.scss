@@ -6,7 +6,9 @@
 	background-image: url("data:image/svg+xml,%3Csvg width='1680' height='1150' viewBox='0 0 1680 1150' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.08'%3E%3Cpath d='M1786.07 1148.58H1380.07L1048.22 656.797L1257.3 354.358L1786.07 1148.58Z' stroke='black'/%3E%3Cpath d='M1786.07 -634.5L1258.6 161.797L1049.26 -141.421L1376.44 -634.5H1786.07Z' stroke='black'/%3E%3Cpath d='M299.93 -634.5L915.692 257.04L299.93 1148.58H-106.071L482.535 257.315L482.717 257.04L482.535 256.765L-106.071 -634.5H299.93Z' stroke='black'/%3E%3C/g%3E%3C/svg%3E%0A");
 	background-repeat: no-repeat;
 	background-position: center top;
-
+	.container {
+		max-width: 1144px;
+	}
 	&::before {
 		content: '';
 		position: absolute;
@@ -23,10 +25,10 @@
 	}
 
 	@include mobile {
-		padding-block: 40px;
-
+		padding-block: 0px;
+		background-color: #F5F5F5;
 		&::before {
-			inset-block: 40px;
+			display: none;
 		}
 	}
 } 
@@ -50,13 +52,13 @@
 	}
 
 	@include mobile {
-		padding: 32px 24px;
+		padding: 76px 0px;
 	}
 
 	&__intro {
 		display: flex;
 		flex-direction: column;
-		gap: 24px;
+		gap: 21px;
 		max-width: 424px;
 	}
 
@@ -73,7 +75,7 @@
 		letter-spacing: -0.01em;
 
 		@include mobile {
-			font-size: px-to-rem(28);
+			font-size: px-to-rem(32);
 		}
 	}
 
@@ -103,7 +105,7 @@
 	.application-form__fields {
 		display: flex;
 		flex-direction: column;
-		gap: 40px;
+		gap: 55px;
 
 		@include mobile {
 			gap: 32px;
@@ -145,8 +147,8 @@
 	&__file-heading {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-		margin-bottom: 16px;
+		gap: 4px;
+		margin-bottom: 4px;
 	}
 
 	&__file-note,
@@ -160,6 +162,9 @@
 
 	&__helper {
 		max-width: 100%;
+		@include mobile {
+			font-size: 11px;
+		}
 	}
 
 	&__control {
@@ -193,6 +198,8 @@
 			padding-top: 20px;
 			padding-bottom: 20px;
 			resize: vertical;
+			font-size: 14px;
+			line-height: 1.2;
 		}
 
 		&--select {
@@ -279,11 +286,14 @@
 		align-items: center;
 		justify-content: space-between;
 		gap: 32px;
-		padding-top: 16px;
+		padding-top: 36px;
 
 		@include tablet {
 			flex-direction: column;
 			align-items: flex-start;
+		}
+		@include mobile {
+			gap: 23px;
 		}
 	}
 
@@ -304,6 +314,9 @@
 
 		@include tablet {
 			max-width: none;
+		}
+		@include mobile {
+			--min-width: 0;
 		}
 	}
 

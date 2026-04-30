@@ -1,0 +1,128 @@
+@import '_variable';
+
+.text-page {
+	background-color: $white;
+
+	&__hero {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding-top: px-to-rem(64);
+		padding-bottom: px-to-rem(200);
+		background-color: $clr-base;
+		color: $white;
+		text-align: center;
+	}
+
+	&__hero-container {
+		max-width: calc(#{px-to-rem(1096)} + #{px-to-rem(48)});
+	}
+
+	&__title {
+		margin: 0;
+		font-size: px-to-rem(48);
+		font-weight: 400;
+		line-height: 1.2;
+		letter-spacing: -0.01em;
+	}
+
+	&__featured-image-wrap {
+		margin-top: -#{px-to-rem(80)};
+	}
+
+	&__featured-image-container {
+		max-width: calc(#{px-to-rem(1096)} + #{px-to-rem(48)});
+	}
+
+	&__featured-image {
+		height: px-to-rem(424);
+		margin: 0;
+		overflow: hidden;
+	}
+
+	&__featured-image-el {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	&__body {
+		padding-block: px-to-rem(112);
+	}
+
+	&__body-container {
+		max-width: calc(#{px-to-rem(872)} + #{px-to-rem(48)});
+	}
+	&__content {
+		font-size: 16px;
+		line-height: 1.7;
+		color: #778493;
+		& > *:first-child {
+			margin-top: 0;
+		}
+		& > *:last-child {
+			margin-bottom: 0;
+		}
+		p {
+			margin-block: 27px;
+		}
+		h2 {
+			font-size: 24px;
+			margin-block: 1em;
+		}
+		.wp-block-heading {
+			color: #10233A;
+		}
+		.wp-block-list {
+			color: #10233A;
+			margin-block: 64px;
+			display: grid;
+			grid-gap: 28px;
+			line-height: 1.5;
+		}
+	}
+	@include tablet {
+		&__hero {
+			margin-top: -#{px-to-rem(84)};
+			padding-top: px-to-rem(144);
+			padding-bottom: px-to-rem(160);
+		}
+
+		&__title {
+			font-size: px-to-rem(40);
+		}
+
+		&__featured-image {
+			height: px-to-rem(360);
+		}
+
+		&__body {
+			padding-block: px-to-rem(80);
+		}
+	}
+
+	@include mobile {
+		&__hero {
+			margin-top: -#{px-to-rem(84)};
+			padding-top: px-to-rem(88);
+			padding-bottom: px-to-rem(104);
+		}
+
+		&__title {
+			font-size: px-to-rem(32);
+		}
+
+		&__featured-image-wrap {
+			margin-top: -#{px-to-rem(48)};
+		}
+
+		&__featured-image {
+			height: auto;
+		}
+
+		&__body {
+			padding-block: px-to-rem(64);
+		}
+	}
+}

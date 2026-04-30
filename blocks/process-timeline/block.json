@@ -1,0 +1,39 @@
+{
+	"name": "curixus/process-timeline",
+	"title": "Process Timeline",
+	"description": "Horizontal process timeline with centered heading, subtitle and connected step badges.",
+	"category": "curixus",
+	"icon": "list-view",
+	"keywords": ["process", "timeline", "steps", "horizontal"],
+	"acf": {
+		"mode": "preview",
+		"blockVersion": 3,
+		"renderTemplate": "block-render.php"
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "none"
+		}
+	},
+	"supports": {
+		"align": ["none"],
+		"anchor": true,
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"color": {
+			"background": false,
+			"gradients": false,
+			"link": false
+		},
+		"dimensions": {
+			"minHeight": false
+		},
+		"position": {
+			"sticky": false
+		}
+	},
+	"style": ["file:./style.css"]
+}

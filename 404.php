@@ -10,49 +10,24 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main error-404-page">
+		<section class="error-404 not-found" aria-labelledby="error-404-title">
+			<div class="error-404__container container">
+				<p class="error-404__code" aria-hidden="true"><?php esc_html_e( '404', 'curixus' ); ?></p>
 
-		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'curixus' ); ?></h1>
-			</header><!-- .page-header -->
+				<div class="error-404__content">
+					<header class="error-404__header">
+						<h1 id="error-404-title" class="error-404__title"><?php esc_html_e( 'Page not found', 'curixus' ); ?></h1>
+						<p class="error-404__text"><?php esc_html_e( 'It may have been moved or no longer exists. Try using the menu at the top to find what you\'re looking for.', 'curixus' ); ?></p>
+					</header>
 
-			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'curixus' ); ?></p>
-
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'curixus' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$curixus_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'curixus' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$curixus_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-			</div><!-- .page-content -->
-		</section><!-- .error-404 -->
+					<a class="error-404__button btn btn--lg btn--dark-transparent" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+						<span class="btn__text"><?php esc_html_e( 'Go to front page', 'curixus' ); ?></span>
+						<span class="btn__icon btn__icon--after" aria-hidden="true"><?php sprite_svg( 'icon-right', '6', '12' ); ?></span>
+					</a>
+				</div>
+			</div>
+		</section>
 
 	</main><!-- #main -->
 
