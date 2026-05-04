@@ -49,6 +49,7 @@ $section_description = get_field( 'section_description' );
 			<?php endif; ?>
 
 			<?php if ( have_rows( 'steps' ) ) : ?>
+				<?php $i = 0; ?>
 				<ol class="process-timeline__steps" data-step-count="<?php echo esc_attr( count( get_field( 'steps' ) ?: array() ) ); ?>">
 					<?php
 					while ( have_rows( 'steps' ) ) :
@@ -73,7 +74,7 @@ $section_description = get_field( 'section_description' );
 							);
 						}
 						?>
-						<li class="process-timeline__step process-timeline__step--<?php echo esc_attr( $step_variant ); ?>">
+						<li data-aos="fade-left" data-aos-delay="<?php echo esc_attr( $i * 100 ); ?>" class="process-timeline__step process-timeline__step--<?php echo esc_attr( $step_variant ); ?>">
 							<div class="process-timeline__badge">
 								<?php if ( 'icon' === $step_variant ) : ?>
 									<span class="process-timeline__badge-icon" aria-hidden="true"><?php echo $step_icon_markup; ?></span>
@@ -92,6 +93,7 @@ $section_description = get_field( 'section_description' );
 								<?php endif; ?>
 							</div>
 						</li>
+						<?php $i++; ?>
 					<?php endwhile; ?>
 				</ol>
 			<?php endif; ?>

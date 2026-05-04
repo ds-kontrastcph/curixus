@@ -29,6 +29,7 @@ $clr-muted:  #778493;
 			width: 100%;
 			position: relative;
 			left: auto;
+			overflow: hidden;
 		}
 	}
 
@@ -41,6 +42,8 @@ $clr-muted:  #778493;
 		@include tablet {
 			position: relative;
 			inset: auto;
+			padding-left: 16%;
+			margin-block: -28px;
 		}
 	}
 

@@ -64,9 +64,10 @@ $wrapper_attributes = get_block_wrapper_attributes([
 		</div>
 		<?php if ( have_rows( 'items' ) ) : ?>
 			<ul class="approach-list">
+				<?php $i = 0; ?>
 				<?php while ( have_rows( 'items' ) ) : the_row(); ?>
 					<?php $icon = get_sub_field( 'icon' ); ?>
-					<li class="approach-list__item">
+					<li data-aos="fade-left" data-aos-delay="<?php echo esc_attr( $i * 100 ); ?>" class="approach-list__item">
 						<div class="approach-list__icon">
 							<?php if ( $icon ) : ?>
 								<img src="<?php echo esc_url( $icon['url'] ); ?>" alt="<?php echo esc_attr( $icon['alt'] ); ?>" />
@@ -81,6 +82,7 @@ $wrapper_attributes = get_block_wrapper_attributes([
 							<?php endif ?>
 						</div>
 					</li>
+					<?php $i++; ?>
 				<?php endwhile; ?>
 			</ul>
 		<?php endif; ?>
