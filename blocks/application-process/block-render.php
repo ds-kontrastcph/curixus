@@ -44,7 +44,7 @@ $cta_button    = get_field( 'cta_button' );
 <section id="<?php echo esc_attr( $id ); ?>" <?php echo $wrapper_attributes; ?>>
 	<div class="container">
 		<div class="application-process">
-			<div class="application-process__content">
+			<div data-aos="fade-up" class="application-process__content">
 				<?php if ( ! empty( $section_title ) ) : ?>
 					<h2 class="application-process__title"><?php echo esc_html( $section_title ); ?></h2>
 				<?php endif; ?>
@@ -64,6 +64,7 @@ $cta_button    = get_field( 'cta_button' );
 			<?php if ( have_rows( 'steps' ) ) : ?>
 				<div class="application-process__steps">
 					<?php
+					$i = 0;
 					while ( have_rows( 'steps' ) ) :
 						the_row();
 
@@ -86,7 +87,7 @@ $cta_button    = get_field( 'cta_button' );
 							);
 						}
 						?>
-						<div class="application-process__step application-process__step--<?php echo esc_attr( $step_variant ); ?>">
+						<div data-aos="fade-up" data-aos-delay="<?php echo esc_attr( $i * 100 ); ?>" class="application-process__step application-process__step--<?php echo esc_attr( $step_variant ); ?>">
 							<div class="application-process__badge">
 								<?php if ( 'icon' === $step_variant ) : ?>
 									<span class="application-process__badge-icon" aria-hidden="true"><?php echo $step_icon_markup; ?></span>
@@ -103,6 +104,7 @@ $cta_button    = get_field( 'cta_button' );
 								<?php endif; ?>
 							</div>
 						</div>
+					<?php $i++; ?>
 					<?php endwhile; ?>
 				</div>
 			<?php endif; ?>

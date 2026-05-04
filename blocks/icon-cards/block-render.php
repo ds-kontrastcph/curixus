@@ -16,13 +16,14 @@ $wrapper_attributes = get_block_wrapper_attributes( [ 'class' => $classes ] );
 	<div class="icon-cards__inner">
 		<?php if ( have_rows( 'cards' ) ) : ?>
 			<div class="icon-cards__grid">
+				<?php $i = 0; ?>
 				<?php while ( have_rows( 'cards' ) ) : the_row(); ?>
 					<?php
 					$icon        = get_sub_field( 'icon' );
 					$title       = get_sub_field( 'title' );
 					$description = get_sub_field( 'description' );
 					?>
-					<div class="icon-cards__card">
+					<div data-aos="fade-up" data-aos-delay="<?php echo esc_attr( $i * 100 ); ?>" class="icon-cards__card">
 						<?php if ( $icon ) : ?>
 							<div class="icon-cards__icon" aria-hidden="true">
 								<img
@@ -43,6 +44,7 @@ $wrapper_attributes = get_block_wrapper_attributes( [ 'class' => $classes ] );
 							<?php endif; ?>
 						</div>
 					</div>
+					<?php $i++; ?>
 				<?php endwhile; ?>
 			</div>
 		<?php endif; ?>

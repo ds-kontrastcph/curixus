@@ -71,7 +71,7 @@ $allowed = array(
 <?php else: ?>
 <section id="<?php echo esc_attr( $id ); ?>" <?php echo $wrapper_attributes; ?>>
 	<div class="visual-section__wrap visual-section__wrap--<?php the_field( 'content_size' ); ?> visual-section__wrap--<?php the_field( 'image_direction' ); ?>">
-		<div class="visual-section__visual">
+		<div data-aos="fade-up" class="visual-section__visual">
 			
 			<?php $image = get_field( 'image' ); ?>
 			<?php if ( $image ) : ?>
@@ -79,7 +79,7 @@ $allowed = array(
 			<?php endif; ?>
 
 		</div>
-		<div class="visual-section__content">
+		<div data-aos="fade-up" data-aos-delay="150" class="visual-section__content">
 			<InnerBlocks allowedBlocks="<?php echo esc_attr( wp_json_encode( $allowed ) ); ?>" template="<?php echo esc_attr( wp_json_encode( $template ) ); ?>" />
 			
 		</div>

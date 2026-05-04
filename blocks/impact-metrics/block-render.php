@@ -71,8 +71,9 @@ if ( empty( $metrics ) ) {
 <section id="<?php echo esc_attr( $id ); ?>" <?php echo $wrapper_attributes; ?>>
 	<div class="container">
 		<div class="impact-metrics">
+			<?php $i = 0; ?>
 			<?php foreach ( $metrics as $metric ) : ?>
-				<div class="impact-metrics__item">
+				<div data-aos="fade-up" data-aos-delay="<?php echo esc_attr( $i * 100 ); ?>" class="impact-metrics__item">
 					<?php if ( ! empty( $metric['value'] ) ) : ?>
 						<p class="impact-metrics__value"><?php echo esc_html( $metric['value'] ); ?></p>
 					<?php endif; ?>
@@ -80,6 +81,7 @@ if ( empty( $metrics ) ) {
 						<div class="impact-metrics__description"><?php echo wp_kses_post( nl2br( esc_html( $metric['description'] ) ) ); ?></div>
 					<?php endif; ?>
 				</div>
+				<?php $i++; ?>
 			<?php endforeach; ?>
 		</div>
 	</div>

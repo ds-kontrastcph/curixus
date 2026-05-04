@@ -80,6 +80,13 @@ $footer_context = curixus_project_get_footer_context();
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script type="text/javascript">
+	AOS.init({
+		duration: 600,
+		easing: 'ease',
+		offset: 100,
+	});
+</script>
 </body>
 </html>
