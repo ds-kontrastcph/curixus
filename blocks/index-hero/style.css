@@ -26,6 +26,7 @@
     width: 100%;
     position: relative;
     left: auto;
+    overflow: hidden;
   }
 }
 .index-hero__image-photo {
@@ -37,6 +38,8 @@
   .index-hero__image-photo {
     position: relative;
     inset: auto;
+    padding-left: 16%;
+    margin-block: -28px;
   }
 }
 .index-hero__img {
