@@ -143,3 +143,8 @@ require get_template_directory() . '/inc/helpers.php';
  * Register custom post types.
  */
 require get_template_directory() . '/inc/init-cpt.php';
+
+/**
+ * Contact Form 7 integration for the investment application form.
+ */
+require get_template_directory() . '/inc/cf7-application-form.php';

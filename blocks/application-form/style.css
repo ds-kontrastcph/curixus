@@ -120,6 +120,30 @@
   flex-direction: column;
   gap: 8px;
 }
+.application-form__input {
+  position: relative;
+  display: block;
+  margin-top: 8px;
+}
+.application-form__input .wpcf7-form-control-wrap {
+  display: block;
+  margin-top: 0;
+}
+.application-form__input-prefix, .application-form__input-suffix {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #778493;
+  font-size: 0.875rem;
+  font-weight: 600;
+  pointer-events: none;
+}
+.application-form__input-prefix {
+  left: 20px;
+}
+.application-form__input-suffix {
+  right: 20px;
+}
 .application-form__label, .application-form__label-text {
   display: block;
   margin: 0;
@@ -191,6 +215,20 @@
   background-position: right 20px center;
   background-repeat: no-repeat;
   background-size: 12px 7px;
+}
+.application-form__control--has-prefix {
+  padding-left: 64px;
+}
+.application-form__control--has-suffix {
+  padding-right: 64px;
+}
+.application-form__control[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.application-form__control::-webkit-outer-spin-button, .application-form__control::-webkit-inner-spin-button {
+  appearance: none;
+  margin: 0;
 }
 .application-form__file-input {
   display: block;
@@ -307,6 +345,8 @@
   font-size: 0.75rem;
   line-height: 1.5;
   font-weight: 500;
+  position: absolute;
+  top: 100%;
 }
 .application-form .wpcf7-response-output {
   margin: 24px 0 0 !important;
