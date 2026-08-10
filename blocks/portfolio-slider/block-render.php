@@ -100,12 +100,25 @@ $section_description = get_field( 'section_description' );
 							$category_name = $first_category->name;
 						}
 					}
+
+					$portfolio_item_id     = get_the_ID();
+					$portfolio_item_url    = curixus_project_get_portfolio_item_url( $portfolio_item_id );
+					$portfolio_link_target = curixus_project_get_portfolio_item_link_target( $portfolio_item_id );
+					$portfolio_link_rel    = '_blank' === $portfolio_link_target ? 'noopener noreferrer' : '';
 					?>
 					<article class="portfolio-card">
 						<?php if ( ! empty( $featured_image_url ) ) : ?>
 							<img class="portfolio-card__image" src="<?php echo esc_url( $featured_image_url ); ?>" alt="<?php echo esc_attr( $featured_image_alt ? $featured_image_alt : get_the_title() ); ?>">
 						<?php endif; ?>
-						<a class="portfolio-card__overlay" href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr( sprintf( __( 'Read case study: %s', 'curixus' ), get_the_title() ) ); ?>">
+						<a
+							class="portfolio-card__overlay"
+							href="<?php echo esc_url( $portfolio_item_url ); ?>"
+							target="<?php echo esc_attr( $portfolio_link_target ); ?>"
+							<?php if ( ! empty( $portfolio_link_rel ) ) : ?>
+								rel="<?php echo esc_attr( $portfolio_link_rel ); ?>"
+							<?php endif; ?>
+							aria-label="<?php echo esc_attr( sprintf( __( 'Read case study: %s', 'curixus' ), get_the_title() ) ); ?>"
+						>
 							<div class="portfolio-card__meta">
 								<?php if ( ! empty( $category_name ) ) : ?>
 									<div class="portfolio-card__category"><?php echo esc_html( $category_name ); ?></div>
