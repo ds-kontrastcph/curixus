@@ -1,0 +1,44 @@
+{
+    "key": "group_portfolio_post",
+    "title": "Portfolio Item",
+    "fields": [
+        {
+            "key": "field_portfolio_resource_url",
+            "label": "Resource URL",
+            "name": "resource_url",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "Optional. When set, portfolio cards link to this URL instead of the portfolio page.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": "https:\/\/"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "portfolio"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "modified": 1754812800
+}

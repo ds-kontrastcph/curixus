@@ -176,5 +176,53 @@ function get_excerpt_trim($num_words='20', $more='...', $post_id = ''){
 	return $excerpt;
 }
 
+/**
+ * Get the public link URL for a portfolio item.
+ *
+ * Uses the optional ACF resource_url when set, otherwise falls back to the post permalink.
+ *
+ * @param int $post_id Portfolio post ID.
+ * @return string URL or empty string when post ID is invalid.
+ */
+function curixus_project_get_portfolio_item_url( $post_id = 0 ) {
+	$post_id = $post_id ? (int) $post_id : get_the_ID();
+
+	if ( ! $post_id ) {
+		return '';
+	}
+
+	$resource_url = get_field( 'resource_url', $post_id );
+
+	if ( is_string( $resource_url ) && '' !== trim( $resource_url ) ) {
+		return $resource_url;
+	}
+
+	return get_permalink( $post_id );
+}
+
+/**
+ * Get link target for a portfolio item card.
+ *
+ * Custom resource URLs open in a new tab; internal permalinks stay in the same tab.
+ *
+ * @param int $post_id Portfolio post ID.
+ * @return string Link target attribute value.
+ */
+function curixus_project_get_portfolio_item_link_target( $post_id = 0 ) {
+	$post_id = $post_id ? (int) $post_id : get_the_ID();
+
+	if ( ! $post_id ) {
+		return '_self';
+	}
+
+	$resource_url = get_field( 'resource_url', $post_id );
+
+	if ( is_string( $resource_url ) && '' !== trim( $resource_url ) ) {
+		return '_blank';
+	}
+
+	return '_self';
+}
+
 // remove <br> and <p> from CF7
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
